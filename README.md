@@ -29,7 +29,12 @@ Publication data lives in `app/page.tsx`. The publication count is derived from
 the complete list. Citation metrics were checked against INSPIRE-HEP on
 9 October 2026: 16 papers, 457 citations, and h-index 10.
 
-Research copy follows the October 2026 research statement, with QFT in Klein
-space and with multiple time directions included under holography beyond
-AdS/CFT. Black hole imaging appears last as earlier work. Current research and
-future plans are distinguished from published results.
+Research content lives in `app/research-content.ts` and follows the October
+2026 research statement. Each area introduces its broader motivation before
+describing results, work in preparation, and concrete next steps. QFT in Klein
+space and with multiple time directions is included under holography beyond
+AdS/CFT. Black hole imaging appears last as earlier work.
+
+Education, teaching, academic activities, honors, and personal interests live
+in `app/academic-profile.ts`, following the academic CV updated on 8 October
+2026. The homepage retains the existing approved public contact details.

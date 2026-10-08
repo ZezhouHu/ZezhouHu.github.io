@@ -2,19 +2,10 @@
 
 import { useEffect, useState } from "react";
 
+import { researchVision, researchAreas, futurePrograms, type LocalizedText } from "./research-content";
+import { education, teaching, activities, honors, profile } from "./academic-profile";
+
 type Locale = "en" | "zh";
-type LocalizedText = { en: string; zh: string };
-type ResearchArea = {
-  id: string;
-  index: string;
-  tone: string;
-  title: LocalizedText;
-  summary: LocalizedText;
-  detail: LocalizedText;
-  current?: LocalizedText;
-  topics: { en: string[]; zh: string[] };
-  papers: { title: LocalizedText; venue: string; href: string }[];
-};
 
 const pick = (locale: Locale, text: LocalizedText) => text[locale];
 
@@ -55,11 +46,10 @@ const copy = {
     label: { en: "01 / Research", zh: "01 / 研究方向" },
     title: { en: "The quantum structure of spacetime.", zh: "时空的量子结构。" },
     intro: {
-      en: "I study how boundary quantum theories encode spacetime physics, and whether tensionless degrees of freedom can organize high-energy string dynamics. Carrollian symmetry provides a technical connection between these directions, each with its own physical motivation.",
-      zh: "我研究边界量子理论如何编码时空物理，以及无张力自由度能否组织高能弦的谱与相互作用。Carroll 对称性在两条主线之间提供了技术联系，而各自的物理动机也独立成立。",
+      en: "I combine symmetry analysis and quantization with explicit constructions of fields, states, and amplitudes. My main directions are holography beyond AdS/CFT and the quantum theory of tensionless strings and branes.",
+      zh: "我结合对称性分析与量子化，具体构造场、量子态与振幅。两条主要方向是超越 AdS/CFT 的全息对应，以及无张力弦与膜的量子理论。",
     },
-    focus: { en: "Research focus", zh: "研究内容" },
-    current: { en: "Current work & next steps", zh: "当前工作与下一步" },
+    overview: { en: "The bigger picture", zh: "整体图像" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
     close: { en: "Collapse research area", zh: "收起研究方向" },
@@ -82,163 +72,17 @@ const copy = {
   experience: {
     label: { en: "03 / Academic path", zh: "03 / 学术经历" },
     title: { en: "Research, teaching, exchange.", zh: "研究、教学与学术交流。" },
-    education: { en: "Education & teaching", zh: "教育与教学" },
-    activities: { en: "Selected academic activities", zh: "部分学术交流" },
-    honors: { en: "Selected honors", zh: "部分荣誉" },
+    education: { en: "Education", zh: "教育经历" },
+    teaching: { en: "Teaching & leadership", zh: "教学与团队经历" },
+    activities: { en: "Academic activities", zh: "学术交流" },
+    honors: { en: "Academic honors", zh: "学术荣誉" },
+    interests: { en: "Outside physics", zh: "物理之外" },
   },
   footer: {
     label: { en: "Academic correspondence", zh: "学术联系" },
     title: { en: "Let’s discuss physics.", zh: "欢迎交流物理问题。" },
   },
 };
-
-const researchAreas: ResearchArea[] = [
-  {
-    id: "holography",
-    index: "01",
-    tone: "coral",
-    title: { en: "Holography beyond AdS/CFT", zh: "超越 AdS/CFT 的全息对应" },
-    summary: {
-      en: "How do boundary quantum states encode local fields, particles, and gravitational physics in flat and de Sitter spacetime?",
-      zh: "边界量子态如何编码平直与 de Sitter 时空中的局域场、粒子及引力物理？",
-    },
-    detail: {
-      en: "Our work reconstructs massless free bulk fields from a boundary Carrollian conformal field theory, giving an explicit bulk–boundary propagator. We also investigate de Sitter holography through flipped AdS/ℤ: boundary two-point functions agree with conformal symmetry, and in three dimensions the Cardy formula reproduces cosmological-horizon entropies. To interpret continuation across spacetime signatures, we develop canonical and path-integral descriptions of QFT in Klein space and flat spacetimes with multiple time directions. These studies give explicit quantum-state and vacuum prescriptions, including a free two-point function and an LSZ reduction formula in Klein space.",
-      zh: "我们从边界 Carroll 共形场论重构无质量自由体场，得到显式的体–边界传播子；也通过翻转 AdS/ℤ 研究 de Sitter 全息，其中边界两点函数与共形对称性一致，三维情形下的 Cardy 公式再现了宇宙学视界熵。为理解不同时空号差之间的延拓，我们构建 Klein 时空及多时间方向平直时空中量子场论的正则与路径积分描述，明确量子态和真空选取，并得到 Klein 时空中的自由两点函数与 LSZ 约化公式。",
-    },
-    current: {
-      en: "In work in preparation, we extend bulk reconstruction to a four-dimensional massive scalar. Within this construction, real support requires continuation to Klein spacetime. The transform is defined locally on analytically continuable data; its extension to the physical one-particle Hilbert space remains open. I am studying its relation to Lorentzian states and observables, and how state prescriptions and analytic domains guide extensions to fields with spin, interactions, and de Sitter spacetime.",
-      zh: "在准备中的工作里，我们将体重构推广到四维有质量标量场；在这一构造中，具有实支撑的涂抹函数需要延拓到 Klein 时空。当前变换局部定义在可解析延拓的数据上，能否扩展到物理单粒子 Hilbert 空间仍是开放问题。我正在研究它与 Lorentz 号差下量子态和可观测量的联系，以及如何借助态选取与解析域推广到有自旋的场、相互作用和 de Sitter 时空。",
-    },
-    topics: {
-      en: ["Flat holography", "Bulk reconstruction", "de Sitter holography", "Klein space", "Multiple-time QFT"],
-      zh: ["平直全息", "体重构", "de Sitter 全息", "Klein 时空", "多时间方向量子场论"],
-    },
-    papers: [
-      {
-        title: { en: "Holography in flipped AdS/ℤ: Another approach to dS holography", zh: "翻转 AdS/ℤ 中的全息：de Sitter 全息的另一种途径" },
-        venue: "Preprint (2026)",
-        href: "https://arxiv.org/abs/2608.08837",
-      },
-      {
-        title: { en: "Bulk reconstruction in flat holography", zh: "平直全息中的体重构" },
-        venue: "JHEP 03, 064 (2024)",
-        href: "https://arxiv.org/abs/2312.13574",
-      },
-      {
-        title: { en: "QFT in Klein space", zh: "Klein 空间中的量子场论" },
-        venue: "Phys. Rev. D 113, 085005 (2026)",
-        href: "https://arxiv.org/abs/2505.16436",
-      },
-      {
-        title: { en: "Quantum field theory in flat spacetime with multiple time directions", zh: "多时间方向平直时空中的量子场论" },
-        venue: "Phys. Rev. D 112, 085008 (2025)",
-        href: "https://arxiv.org/abs/2506.21994",
-      },
-    ],
-  },
-  {
-    id: "tensionless-strings",
-    index: "02",
-    tone: "gold",
-    title: { en: "Tensionless strings & branes", zh: "无张力弦与膜" },
-    summary: {
-      en: "What do symmetry, vacuum choice, and quantization reveal about the physical states and interactions of tensionless extended objects?",
-      zh: "对称性、真空选取与量子化如何决定无张力延展物体的物理态和相互作用？",
-    },
-    detail: {
-      en: "Our work derives ghost systems, symmetry algebras, and critical dimensions for tensionless strings and superstrings. We study the spectrum, winding sectors, graviton vertex operators, and amplitudes of the flipped-vacuum Carrollian superstring, and extend the analysis to tensionless branes and BRST quantization. Comparing bosonic-string formulations shows how quantum anomalies depend on the action, vacuum, and quantization prescription: classical agreement alone does not establish equivalent quantum theories.",
-      zh: "我们推导了无张力弦与超弦的鬼场系统、对称性代数和临界维数，研究翻转真空中 Carroll 超弦的谱、缠绕扇区、引力子顶点算符与振幅，并将分析推广到无张力膜及 BRST 量子化。对不同玻色弦表述的比较揭示了量子反常对作用量、真空和量子化方案的依赖：经典层面的吻合本身并不能确立量子理论等价。",
-    },
-    current: {
-      en: "I am studying one-loop partition functions and modular invariance. Current genus-one results concern unintegrated vacuum forms and, for homogeneous superstrings, conditions for modular-invariant spin-structure sums under a specified analytic prescription. Moduli integration and the consistency of an integrated one-loop amplitude remain open. Comparing BRST cohomologies will test whether taking the tensionless limit before or after quantization yields equivalent physical states. Degeneration limits and factorization will help test the relation to high-energy string scattering.",
-      zh: "我正在研究单圈配分函数与模不变性。目前的亏格一结果涉及未积分真空形式，以及指定解析方案下齐次超弦自旋结构求和的模不变条件；模空间积分和积分后单圈振幅的自洽性仍有待解决。下一步将比较 BRST 上同调，检验量子化前后取无张力极限是否得到等价的物理态。退化极限与因子化将帮助检验其与高能弦散射的联系。",
-    },
-    topics: {
-      en: ["Carrollian strings", "Quantum anomalies", "BRST quantization", "Modular invariance", "Tensionless branes"],
-      zh: ["Carroll 弦", "量子反常", "BRST 量子化", "模不变性", "无张力膜"],
-    },
-    papers: [
-      {
-        title: { en: "Quantum Anomalies of Tensionless Bosonic Strings", zh: "无张力玻色弦的量子反常" },
-        venue: "Preprint (2026)",
-        href: "https://arxiv.org/abs/2608.02987",
-      },
-      {
-        title: { en: "Symmetries and Critical Dimensions of Tensionless Branes", zh: "无张力膜的对称性与临界维数" },
-        venue: "Chinese Physics B (2026)",
-        href: "https://arxiv.org/abs/2604.01883",
-      },
-      {
-        title: { en: "Carrollian superstring in the flipped vacuum", zh: "翻转真空中的 Carroll 超弦" },
-        venue: "Phys. Rev. D 112, 046005 (2025)",
-        href: "https://arxiv.org/abs/2501.11011",
-      },
-      {
-        title: { en: "Path-integral quantization of tensionless (super) string", zh: "无张力（超）弦的路径积分量子化" },
-        venue: "JHEP 08, 133 (2023)",
-        href: "https://arxiv.org/abs/2302.05975",
-      },
-    ],
-  },
-  {
-    id: "black-holes",
-    index: "03",
-    tone: "cyan",
-    title: { en: "Black hole imaging", zh: "黑洞成像" },
-    summary: {
-      en: "Earlier work on how strong gravity, particle motion, and quantum electrodynamics shape black hole images and radiation.",
-      zh: "早期工作关注强引力、粒子运动与量子电动力学如何塑造黑洞图像和辐射。",
-    },
-    detail: {
-      en: "My earlier research studied black hole optics in strong-field regimes: QED corrections to black hole shadows, polarized synchrotron images in curved spacetime, charged-particle motion around magnetized Kerr black holes, and photon emission near extremal horizons. I also investigated emergent conformal symmetry near photon rings.",
-      zh: "我早期研究强场区域中的黑洞光学，包括黑洞阴影的 QED 修正、弯曲时空中的偏振同步辐射图像、磁化 Kerr 黑洞附近带电粒子的运动与成像，以及近极端视界附近的光子辐射，也考察了光子环附近涌现的共形对称性。",
-    },
-    topics: {
-      en: ["Black hole shadows", "Polarization", "Kerr spacetime", "QED effects", "Photon rings"],
-      zh: ["黑洞阴影", "偏振成像", "Kerr 时空", "QED 效应", "光子环"],
-    },
-    papers: [
-      {
-        title: { en: "QED effect on a black hole shadow", zh: "黑洞阴影中的 QED 效应" },
-        venue: "Phys. Rev. D 103, 044057 (2021)",
-        href: "https://arxiv.org/abs/2012.07022",
-      },
-      {
-        title: { en: "Polarized images of synchrotron radiations in curved spacetime", zh: "弯曲时空中同步辐射的偏振图像" },
-        venue: "Eur. Phys. J. C 82, 1166 (2022)",
-        href: "https://arxiv.org/abs/2203.02908",
-      },
-      {
-        title: { en: "On emergent conformal symmetry near the photon ring", zh: "光子环附近涌现的共形对称性" },
-        venue: "JHEP 05, 115 (2023)",
-        href: "https://arxiv.org/abs/2212.02958",
-      },
-      {
-        title: { en: "Polarized images of charged particles in vortical motions around a magnetized Kerr black hole", zh: "磁化 Kerr 黑洞附近涡旋运动带电粒子的偏振图像" },
-        venue: "JCAP 03, 013 (2024)",
-        href: "https://arxiv.org/abs/2304.03642",
-      },
-    ],
-  },
-];
-
-const futurePrograms = [
-  {
-    title: { en: "A dynamical boundary description of flat spacetime", zh: "平直时空的动力学边界描述" },
-    detail: {
-      en: "I aim to understand how boundary states and correlations encode particle interactions and gravitational dynamics. Building on explicit field reconstruction, this program addresses bulk locality, the role of quantum states in defining geometry, and the origin of gravitational entropy. De Sitter holography and QFT with non-standard signatures provide complementary tests.",
-      zh: "我希望理解边界量子态和关联函数如何编码粒子相互作用与引力动力学。在显式场重构的基础上，这一计划关注体局域性、量子态在定义几何中的作用，以及引力熵的起源。de Sitter 全息与非标准号差下的量子场论提供互补的检验。",
-    },
-  },
-  {
-    title: { en: "The quantum structure of high-energy string theory", zh: "高能弦论的量子结构" },
-    detail: {
-      en: "I aim to determine which aspects of high-energy string dynamics tensionless theories capture, and what enlarged symmetries imply for physical spectra and interactions. Extensions to branes will test whether these principles apply to more general extended objects and what they reveal about quantum gravity’s microscopic degrees of freedom.",
-      zh: "我希望确定无张力理论能够捕捉高能弦动力学的哪些方面，以及扩大的对称性对物理谱和相互作用意味着什么。推广到膜将检验这些原则能否适用于更一般的延展物体，并探索它们对量子引力微观自由度的启示。",
-    },
-  },
-];
 
 const selectedPublications = [
   {
@@ -322,64 +166,6 @@ const publications = [
   ["2021", { en: "QED effect on a black hole shadow", zh: "黑洞阴影中的 QED 效应" }, "Phys. Rev. D 103, 044057", "2012.07022"],
 ] as const;
 
-const education = [
-  {
-    time: { en: "2022—2027 expected", zh: "2022—2027（预计）" },
-    title: { en: "Ph.D. in Theoretical Physics", zh: "理论物理博士研究生" },
-    place: { en: "School of Physics, Peking University", zh: "北京大学物理学院" },
-  },
-  {
-    time: { en: "2018—2022", zh: "2018—2022" },
-    title: { en: "B.Sc. in Physics", zh: "物理学学士" },
-    place: { en: "School of Physics, Peking University", zh: "北京大学物理学院" },
-  },
-  {
-    time: { en: "Fall 2023", zh: "2023 年秋" },
-    title: { en: "Teaching Assistant", zh: "课程助教" },
-    place: { en: "Theoretical Mechanics, Peking University", zh: "北京大学《理论力学》" },
-  },
-];
-
-const activities = [
-  {
-    year: "2025",
-    title: { en: "The 19th Asian Winter School on Strings, Particles and Cosmology", zh: "第十九届亚洲弦、粒子与宇宙学冬季学校" },
-    type: { en: "Poster", zh: "墙报" },
-  },
-  {
-    year: "2024",
-    title: { en: "International Congress of Basic Science", zh: "国际基础科学大会" },
-    type: { en: "Poster", zh: "墙报" },
-  },
-  {
-    year: "2023",
-    title: { en: "Workshop on Black Hole Images", zh: "黑洞图像研讨会" },
-    type: { en: "Talk", zh: "报告" },
-  },
-  {
-    year: "2023",
-    title: { en: "Annual Meeting of the Division of Gravitation and Relativistic Astrophysics, CPS", zh: "中国物理学会引力与相对论天体物理分会年会" },
-    type: { en: "Talk", zh: "报告" },
-  },
-  {
-    year: "2023",
-    title: { en: "International Congress of Basic Science", zh: "国际基础科学大会" },
-    type: { en: "Poster", zh: "墙报" },
-  },
-];
-
-const honors = [
-  { year: "2025", title: { en: "National Scholarship", zh: "国家奖学金" } },
-  { year: "2024", title: { en: "Hu Ning Scholarship", zh: "北京大学胡宁奖学金" } },
-  {
-    year: "2023",
-    title: {
-      en: "Peking University President’s Scholarship for Doctoral Students",
-      zh: "北京大学博士研究生校长奖学金",
-    },
-  },
-];
-
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
   const [openResearch, setOpenResearch] = useState<string | null>(null);
@@ -446,6 +232,10 @@ export default function Home() {
             <span>{isZh ? "Zezhou Hu" : "胡泽州"}</span>
           </h1>
           <p className="role">{pick(locale, copy.hero.role)}</p>
+          <p className="affiliation">
+            {pick(locale, profile.affiliation)}
+            <span>{pick(locale, profile.graduation)}</span>
+          </p>
           <p className="intro">{pick(locale, copy.hero.intro)}</p>
           <p className="advisor-line">
             <span>{pick(locale, copy.hero.advisor)}</span>
@@ -485,6 +275,12 @@ export default function Home() {
           <p>{pick(locale, copy.research.intro)}</p>
         </div>
 
+        <div className="research-vision">
+          {researchVision.map((paragraph) => (
+            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+          ))}
+        </div>
+
         <div className="research-accordion">
           {researchAreas.map((area) => {
             const isOpen = openResearch === area.id;
@@ -521,14 +317,20 @@ export default function Home() {
                     aria-labelledby={buttonId}
                   >
                     <div className="research-detail">
-                      <p className="panel-label">{pick(locale, copy.research.focus)}</p>
-                      <p>{pick(locale, area.detail)}</p>
-                      {area.current && (
-                        <div className="current-research">
-                          <p className="panel-label">{pick(locale, copy.research.current)}</p>
-                          <p>{pick(locale, area.current)}</p>
-                        </div>
-                      )}
+                      <div className="research-overview">
+                        <h3 className="panel-label">{pick(locale, copy.research.overview)}</h3>
+                        {area.overview.map((paragraph) => (
+                          <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                        ))}
+                      </div>
+                      {area.sections.map((section) => (
+                        <section className="research-topic" key={section.title.en}>
+                          <h3>{pick(locale, section.title)}</h3>
+                          {section.paragraphs.map((paragraph) => (
+                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                          ))}
+                        </section>
+                      ))}
                       <ul aria-label={isZh ? "研究关键词" : "Research topics"}>
                         {area.topics[locale].map((topic) => <li key={topic}>{topic}</li>)}
                       </ul>
@@ -628,6 +430,18 @@ export default function Home() {
                 <div>
                   <strong>{pick(locale, item.title)}</strong>
                   <span>{pick(locale, item.place)}</span>
+                  {item.detail && <span>{pick(locale, item.detail)}</span>}
+                </div>
+              </article>
+            ))}
+            <h3 className="teaching-heading">{pick(locale, copy.experience.teaching)}</h3>
+            {teaching.map((item) => (
+              <article className="timeline-item" key={item.title.en}>
+                <time>{pick(locale, item.time)}</time>
+                <div>
+                  <strong>{pick(locale, item.title)}</strong>
+                  <span>{pick(locale, item.place)}</span>
+                  {item.detail && <span>{pick(locale, item.detail)}</span>}
                 </div>
               </article>
             ))}
@@ -636,11 +450,12 @@ export default function Home() {
           <div className="timeline-column">
             <h3>{pick(locale, copy.experience.activities)}</h3>
             {activities.map((activity, index) => (
-              <article className="activity-item" key={`${activity.year}-${index}`}>
-                <time>{activity.year}</time>
+              <article className="activity-item" key={`${activity.time.en}-${index}`}>
+                <time>{pick(locale, activity.time)}</time>
                 <div>
                   <strong>{pick(locale, activity.title)}</strong>
-                  <span>{pick(locale, activity.type)}</span>
+                  <span>{pick(locale, activity.place)}</span>
+                  <span className="activity-type">{pick(locale, activity.type)}</span>
                 </div>
               </article>
             ))}
@@ -651,12 +466,18 @@ export default function Home() {
           <h3>{pick(locale, copy.experience.honors)}</h3>
           <ul>
             {honors.map((honor) => (
-              <li key={honor.year}>
-                <span>{honor.year}</span>{pick(locale, honor.title)}
+              <li key={honor.title.en}>
+                <span>{pick(locale, honor.time)}</span>{pick(locale, honor.title)}
               </li>
             ))}
           </ul>
         </div>
+        {profile.interests && (
+          <div className="personal-note">
+            <h3>{pick(locale, copy.experience.interests)}</h3>
+            <p>{pick(locale, profile.interests)}</p>
+          </div>
+        )}
       </section>
 
       <footer>
