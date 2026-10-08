@@ -25,5 +25,11 @@ The included workflow builds and publishes the page automatically.
 
 ## Updating publications
 
-Publication data lives in `app/page.tsx`. Citation metrics are dated July 2026;
-update them from the public INSPIRE-HEP author record when needed.
+Publication data lives in `app/page.tsx`. The publication count is derived from
+the complete list. Citation metrics were checked against INSPIRE-HEP on
+9 October 2026: 16 papers, 457 citations, and h-index 10.
+
+Research copy follows the October 2026 research statement, with QFT in Klein
+space and with multiple time directions included under holography beyond
+AdS/CFT. Black hole imaging appears last as earlier work. Current research and
+future plans are distinguished from published results.

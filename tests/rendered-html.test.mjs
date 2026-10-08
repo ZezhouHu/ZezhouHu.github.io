@@ -29,9 +29,9 @@ test("server-renders the academic homepage", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Zezhou Hu \| Theoretical Physics<\/title>/i);
-  assert.match(html, /Questions that connect fields/);
+  assert.match(html, /The quantum structure of spacetime/);
   assert.match(html, /Selected work/);
-  assert.match(html, /View all 14 publications/);
+  assert.match(html, /View all 16 publications/);
   assert.match(html, /English/);
   assert.match(html, /中文/);
   assert.match(html, /aria-expanded="false"/);
