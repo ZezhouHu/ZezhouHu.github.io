@@ -13,7 +13,7 @@ export type ResearchEquation = {
 export const dictionaryEquations: Record<string, ResearchEquation> = {
   "type-ii": {
     id: "type-ii-amplitude-dictionary",
-    title: { en: "An asymptotic amplitude dictionary", zh: "渐近振幅的字典" },
+    title: { en: "From scattering amplitudes to boundary correlators", zh: "从散射振幅到边界关联函数" },
     latex: String.raw`\begin{aligned}
 \mathcal A_{\mathrm{bulk}}
 &=\langle\mathrm{out}|S|\mathrm{in}\rangle_{\mathrm{bulk}},\\
@@ -21,12 +21,12 @@ export const dictionaryEquations: Record<string, ResearchEquation> = {
 &=\mathcal T\!\left[\mathcal A_{\mathrm{bulk}}\right].
 \end{aligned}`,
     description: {
-      en: "The schematic Type II target is to encode transitions between asymptotic bulk states as boundary correlators. The boundary pairing is specified independently; the dictionary does not require bulk and boundary Hilbert spaces to be identified.",
-      zh: "Type II 的示意目标是以边界关联函数编码体渐近态之间的跃迁。边界配对需要独立指定；这一字典不要求将体与边界的 Hilbert 空间认作同一个空间。",
+      en: "This schematic Type II relation expresses transitions between asymptotic bulk states as boundary correlation functions. The boundary pairing is an independent part of the construction; an identification of bulk and boundary Hilbert spaces is not required.",
+      zh: "这一 Type II 关系示意地将体渐近态之间的跃迁表示为边界关联函数。边界配对是构造中需要独立指定的一部分，无需将体与边界的 Hilbert 空间认作同一个空间。",
     },
     notation: {
-      en: "S is the bulk scattering operator; |in⟩ and |out⟩ are asymptotic states. The transform T converts their scattering data to boundary variables, and Oᵢ denotes a boundary operator insertion. A complete interacting dictionary remains a research goal.",
-      zh: "S 为体散射算符，|in⟩ 与 |out⟩ 为渐近态。变换 T 将散射数据转为边界变量，Oᵢ 表示边界算符插入。完整的相互作用字典仍是研究目标。",
+      en: "S is the bulk scattering operator, |in⟩ and |out⟩ are asymptotic states, and Oᵢ denotes a boundary operator insertion. T transforms scattering data into boundary variables. Constructing the complete interacting dictionary remains a research goal.",
+      zh: "S 为体散射算符，|in⟩ 与 |out⟩ 为渐近态，Oᵢ 表示边界算符插入。T 将散射数据变换为边界变量。构建完整的相互作用字典仍是研究目标。",
     },
   },
 };
@@ -39,8 +39,8 @@ export const cutoffGeometry: {
 } = {
   title: { en: "Two regulator pictures", zh: "两种截断面的几何图像" },
   intro: {
-    en: "These conformal diagrams suppress angular directions and illustrate radial and temporal regulators. The curves use cutoff ratios 1, 3, and 8. The observable dictionary and boundary pairing specify the type of holography; the regulator picture alone does not.",
-    zh: "这两幅共形图省略角向维度，分别展示径向与时间截断；曲线对应的截断尺度比为 1、3、8。全息类型由可观测量的字典与边界配对确定，截断面的图像本身不能决定这一分类。",
+    en: "The conformal diagram suppresses angular directions. The radial or temporal cutoff is shown at scale ratios 1, 3, and 8. These regulators illustrate the two pictures; their holographic content is specified by the observable dictionary and boundary pairing.",
+    zh: "共形图省略了角向维度，展示径向或时间截断在尺度比为 1、3、8 时的位置。这些截断面为两种图像提供直观说明；其全息内容由可观测量的字典与边界配对确定。",
   },
   figures: [
     {
@@ -51,8 +51,8 @@ export const cutoffGeometry: {
         zh: "共形时空图展示一族类时径向截断面 r = R，以及阴影标示的保留区域。",
       },
       caption: {
-        en: "Type I regulator picture: a timelike worldtube r = R limits the radial extent while retaining time evolution. Successive curves indicate increasing R; the darker curve is the outermost cutoff. The shaded region is retained, and the cutoff is removed by R → ∞.",
-        zh: "Type I 的截断图像：类时世界管 r = R 限制径向范围，同时保留时间演化。各条曲线表示逐渐增大的 R，较深的曲线为最外层截断。阴影区域被保留，并通过 R → ∞ 移除截断。",
+        en: "Timelike worldtubes r = R regulate the radial extent while retaining time evolution. The curves show increasing R; the shaded region lies inside the outermost cutoff, shown in dark blue. Sending R → ∞ removes the regulator.",
+        zh: "类时世界管 r = R 在保留时间演化的同时限制径向范围。各条曲线对应逐渐增大的 R；阴影区域位于深蓝色标示的最外层截断面以内。令 R → ∞ 即移除截断。",
       },
     },
     {
@@ -63,8 +63,8 @@ export const cutoffGeometry: {
         zh: "共形时空图展示成对的类空截断面 t = −T 与 t = +T，界定入射与出射的散射区域；箭头表示无质量散射。",
       },
       caption: {
-        en: "Type II regulator picture: spacelike surfaces t = −T and t = +T regulate incoming and outgoing states. Successive pairs indicate increasing T; the shaded region lies between the outermost pair. Arrows illustrate massless scattering, with the scattering limit T → ∞.",
-        zh: "Type II 的截断图像：类空截面 t = −T 与 t = +T 调节入态和出态。各对曲线表示逐渐增大的 T，阴影区域位于最外层的一对截面之间。箭头展示无质量散射，并以 T → ∞ 趋向散射极限。",
+        en: "Spacelike surfaces t = ±T provide temporal cutoffs for incoming and outgoing states. Successive pairs show increasing T; the shaded region lies between the outermost pair. Arrows illustrate massless scattering. Sending T → ∞ removes the temporal regulator.",
+        zh: "类空截面 t = ±T 为入态与出态设置时间截断。各对曲线对应逐渐增大的 T，阴影区域位于最外层的一对截面之间；箭头表示无质量散射。令 T → ∞ 即移除时间截断。",
       },
     },
   ],
@@ -78,12 +78,12 @@ X=\frac{V-U}{\pi},\qquad
 Y=\frac{V+U}{\pi},\qquad \ell>0.
 \end{gathered}`,
     description: {
-      en: "At fixed t, R → ∞ approaches spatial infinity i⁰. At fixed r, t → ±∞ approaches timelike infinity i±. The extended cutoff curves also approach the null edges 𝓘±.",
-      zh: "固定 t 时，R → ∞ 趋向空间无穷远 i⁰；固定 r 时，t → ±∞ 趋向类时无穷远 i±。延伸后的截断曲线也趋向零无穷远的边缘 𝓘±。",
+      en: "At fixed t, R → ∞ approaches spatial infinity i⁰; at fixed r, t → ±∞ approaches timelike infinity i±. The cutoff curves also extend toward null infinity 𝓘±.",
+      zh: "固定 t 时，R → ∞ 趋向空间无穷远 i⁰；固定 r 时，t → ±∞ 趋向类时无穷远 i±。截断曲线的延伸部分也趋向零无穷远 𝓘±。",
     },
     notation: {
-      en: "t and r are bulk time and radius. U and V are compactified null coordinates, X and Y are the plotted coordinates, and ℓ is a positive reference length. The displayed families use R/ℓ or T/ℓ = 1, 3, 8.",
-      zh: "t、r 为体时间与径向坐标；U、V 为紧化后的零坐标，X、Y 为绘图坐标，ℓ 为正的参考长度。图中的曲线族取 R/ℓ 或 T/ℓ = 1、3、8。",
+      en: "t and r are bulk time and radius; U and V are compactified null coordinates; X and Y are the plotted coordinates. The positive length ℓ sets the reference scale. The curves use R/ℓ = 1, 3, 8 for the radial cutoff, or T/ℓ = 1, 3, 8 for the temporal cutoff.",
+      zh: "t、r 为体时间与径向坐标，U、V 为紧化后的零坐标，X、Y 为绘图坐标。正的长度 ℓ 给出参考尺度：径向截断取 R/ℓ = 1、3、8，时间截断取 T/ℓ = 1、3、8。",
     },
   },
 };
@@ -95,8 +95,8 @@ export const pairingComparison: {
 } = {
   title: { en: "Physical adjoint and radial pairing", zh: "物理共轭与径向配对" },
   intro: {
-    en: "The global BMS₄ generators give a concrete comparison. The six L and barred L modes form a complex basis of Lorentz generators; the four M modes encode translations. Below, n = −1, 0, 1 and r, s = ±½. The conjugations belong to their respective realizations; shared generator labels do not identify their physical Hilbert spaces.",
-    zh: "BMS₄ 的整体生成元提供了具体的比较：六个 L 与带横线的 L 模式组成 Lorentz 生成元的复基，四个 M 模式编码平移。下式限制 n = −1、0、1，以及 r、s = ±½。两种共轭属于各自的实现；生成元采用共同标签，并不表示它们的物理 Hilbert 空间已被认同。",
+    en: "The distinction is already visible in the global BMS₄ algebra. Its six L and barred L modes form a complex Lorentz basis, and its four M modes generate translations. Here n = −1, 0, 1 and r, s = ±½. Each conjugation belongs to its own realization; common generator labels do not identify the corresponding physical Hilbert spaces.",
+    zh: "这一区别在 BMS₄ 的整体子代数中已可看出：六个 L 与带横线的 L 模式组成 Lorentz 生成元的复基，四个 M 模式生成平移。此处 n = −1、0、1，r、s = ±½。两种共轭分别属于各自的实现，共用生成元标签并不意味着相应的物理 Hilbert 空间相同。",
   },
   equations: [
     {
@@ -108,8 +108,8 @@ L_n^\dagger&=-\bar L_n,\\
 M_{r,s}^\dagger&=M_{s,r}.
 \end{aligned}`,
       description: {
-        en: "In the global BMS₄ induced realization used here, these adjoints follow from Hermiticity of the bulk rotations, boosts, and four-momentum.",
-        zh: "在此处采用的 BMS₄ 整体生成元的诱导实现中，这些共轭关系来自体旋转、boost 与四动量生成元的厄米性。",
+        en: "For the global BMS₄ generators in this induced realization, Hermiticity of the bulk rotations, boosts, and four-momentum fixes these physical adjoints.",
+        zh: "在这一诱导实现中，体旋转、Lorentz 推动与四动量生成元的厄米性确定了 BMS₄ 整体生成元的物理共轭。",
       },
       notation: {
         en: "† denotes the physical adjoint. L and barred L form a complex Lorentz basis, while M labels translations. Only n = −1, 0, 1 and r, s = ±½ are displayed.",
@@ -125,8 +125,8 @@ L_n^\ddagger&=L_{-n},\\
 M_{r,s}^\ddagger&=M_{-r,-s}.
 \end{aligned}`,
       description: {
-        en: "The usual radial highest-weight conjugation is specified by the boundary pairing. It is a separate prescription from the physical bulk adjoint.",
-        zh: "通常的径向最高权共轭由边界配对指定，是与体物理共轭相区别的选取。",
+        en: "The boundary pairing specifies this radial conjugation for highest-weight modules. Its relation to the physical bulk adjoint must be established within the chosen construction.",
+        zh: "边界配对为最高权模指定了这一径向共轭。它与体物理共轭的关系，需要在具体构造中确定。",
       },
       notation: {
         en: "‡ is anti-linear and reverses product order. L and barred L label the global Lorentz modes; M labels translations. Here n = −1, 0, 1 and r, s = ±½.",
@@ -143,12 +143,12 @@ M_{-\frac12,-\frac12}^{\ddagger}
 &=M_{\frac12,\frac12}.
 \end{aligned}`,
       description: {
-        en: "The same named translation mode is fixed by the physical adjoint, while radial conjugation reverses the signs of its two indices. This illustrates the difference between the two algebraic conjugations.",
-        zh: "同一个标签的平移模式在物理共轭下保持不变，径向共轭则反转两个指标的符号。这展示了两种代数共轭的差异。",
+        en: "The physical adjoint fixes this translation mode, whereas radial conjugation exchanges it with the mode of opposite indices. The example makes the difference between the two prescriptions explicit.",
+        zh: "物理共轭使这一平移模式保持不变，径向共轭则将它变为两个指标符号相反的模式。这个例子直接展示了两种共轭选取的差异。",
       },
       notation: {
-        en: "This compares the action of two conjugations on generator labels, rather than identifying states or physical momentum operators across different Hilbert spaces.",
-        zh: "此处比较的是两种共轭对生成元标签的作用，并不认同不同 Hilbert 空间中的态或物理动量算符。",
+        en: "The comparison is between actions on generator labels. States and momentum operators remain defined within their respective realizations.",
+        zh: "此处比较的是共轭对生成元标签的作用；态与动量算符仍在各自的实现中定义。",
       },
     },
   ],
@@ -161,7 +161,7 @@ export const mellinDictionary: {
   title: { en: "Carrollian and celestial amplitude variables", zh: "Carroll 与天球振幅变量" },
   equation: {
     id: "regulated-mellin-dictionary",
-    title: { en: "A common regulated Mellin family", zh: "采用共同调节的 Mellin 族" },
+    title: { en: "Celestial and Carrollian Mellin modes", zh: "天球与 Carroll 的 Mellin 模式" },
     latex: String.raw`\begin{aligned}
 \lvert\Delta;u,z,\bar z\rangle_{\mathrm C,\eta}
 &=\int_0^\infty d\omega\,\omega^{\Delta-1}
@@ -171,8 +171,8 @@ e^{-\eta\omega-i\omega u}\lvert\omega,z,\bar z\rangle,\\
 \quad\eta>0.
 \end{aligned}`,
     description: {
-      en: "For one frequency branch with a common regulator, ordinary celestial Mellin modes are the u = 0 members of the modified Carrollian family. With complete Mellin data wherever inversion exists, the two amplitude dictionaries encode the same scattering information. This does not identify full boundary theories or their pairings: the transform transports the physical adjoint, while a radial highest-weight pairing is a separate boundary choice.",
-      zh: "对同一频率分支采用相同调节后，通常的天球 Mellin 模式就是修正 Carroll 族在 u = 0 的成员。在保留完整 Mellin 数据且变换可逆的范围内，两种振幅字典编码同一组散射信息。这并不认同完整的边界理论及其配对：变换传递物理共轭，而径向最高权配对仍是独立的边界选取。",
+      en: "On a fixed frequency branch with a common regulator, celestial Mellin modes are the u = 0 members of the modified Carrollian family. When the complete Mellin data are retained and the transforms admit inversion, both descriptions encode the same scattering amplitudes. This equivalence concerns the amplitude dictionary. The transform transports the physical adjoint; a radial highest-weight pairing requires a separate boundary prescription.",
+      zh: "在同一频率分支上采用相同调节时，天球 Mellin 模式就是修正 Carroll 族在 u = 0 的成员。保留完整 Mellin 数据且变换可逆时，两种描述编码相同的散射振幅。这一等价性限于振幅字典。物理共轭随变换传递，径向最高权配对则需要另行在边界理论中指定。",
     },
     notation: {
       en: "|ω,z,z̄⟩ is a massless momentum state: ω > 0 is its null momentum scale, and (z,z̄) is a celestial direction with z̄ = z*. Δ is the scaling dimension, u is Carrollian time, and η > 0 is a damping regulator. The limit η → 0⁺ is understood distributionally.",

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ),
   title: "Zezhou Hu | Theoretical Physics",
   description:
-    "Academic homepage of Zezhou Hu, a Ph.D. researcher at Peking University studying the quantum structure of spacetime through holography beyond AdS/CFT and tensionless strings and branes.",
+    "Zezhou Hu is a Ph.D. student in theoretical physics at Peking University. His research focuses on flat-space and de Sitter holography, and tensionless strings and branes.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zezhou Hu | Theoretical Physics",
     description:
-      "The quantum structure of spacetime: flat and de Sitter holography, QFT across spacetime signatures, and tensionless strings and branes.",
+      "Research on flat-space and de Sitter holography, quantum field theory, and tensionless strings and branes.",
     type: "website",
     images: [{ url: "/og.png", width: 1536, height: 1024 }],
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zezhou Hu | Theoretical Physics",
     description:
-      "The quantum structure of spacetime: flat and de Sitter holography, QFT across spacetime signatures, and tensionless strings and branes.",
+      "Research on flat-space and de Sitter holography, quantum field theory, and tensionless strings and branes.",
     images: ["/og.png"],
   },
 };
