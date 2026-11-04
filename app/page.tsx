@@ -53,8 +53,8 @@ const copy = {
     citations: { en: "Citations", zh: "引用" },
     hIndex: { en: "h-index", zh: "h 指数" },
     updated: {
-      en: "INSPIRE-HEP · updated October 2026",
-      zh: "INSPIRE-HEP · 更新于 2026 年 10 月",
+      en: "INSPIRE-HEP · updated 5 November 2026",
+      zh: "INSPIRE-HEP · 更新于 2026 年 11 月 5 日",
     },
   },
   research: {
@@ -283,7 +283,7 @@ export default function Home() {
         aria-label={isZh ? "论文指标" : "Publication metrics"}
       >
         <div><strong>{publications.length}</strong><span>{pick(locale, copy.metrics.publications)}</span></div>
-        <div><strong>457</strong><span>{pick(locale, copy.metrics.citations)}</span></div>
+        <div><strong>469</strong><span>{pick(locale, copy.metrics.citations)}</span></div>
         <div><strong>10</strong><span>{pick(locale, copy.metrics.hIndex)}</span></div>
         <p>{pick(locale, copy.metrics.updated)}</p>
       </section>

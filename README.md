@@ -27,7 +27,9 @@ The included workflow builds and publishes the page automatically.
 
 Publication data lives in `app/page.tsx`. The publication count is derived from
 the complete list. Citation metrics were checked against INSPIRE-HEP on
-9 October 2026: 16 papers, 457 citations, and h-index 10.
+5 November 2026: 16 papers, 469 citations, and h-index 10. These are the
+all-papers totals, including preprints and self-citations, from the official
+[citation summary](https://inspirehep.net/api/literature/facets?facet_name=citation-summary&q=a%20Zezhou.Hu.1).
 
 Research content lives in `app/research-content.ts` and follows the October
 2026 research statement. Each area introduces its broader motivation before
