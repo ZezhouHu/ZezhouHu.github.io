@@ -19,9 +19,9 @@ export type ResearchArea = {
       title: LocalizedText;
       subtitle: LocalizedText;
       paragraphs: LocalizedText[];
+      notes: LocalizedText[];
       characteristics: { label: LocalizedText; detail: LocalizedText }[];
     }[];
-    conclusion: LocalizedText[];
     focus: { title: LocalizedText; paragraphs: LocalizedText[] };
   };
   overview: LocalizedText[];
@@ -78,6 +78,12 @@ export const researchAreas: ResearchArea[] = [
               zh: "具体重构映射需要连同其定义域、归一化和配对一起给出；它是否能成为幺正 Hilbert 空间映射，需要进一步检验。",
             },
           ],
+          notes: [
+            {
+              en: "The distinction concerns the observable dictionary together with the pairing of boundary states. Representation labels and local primary conditions alone do not fix these data. The pairing and Hermitian conjugation must therefore be stated as part of each boundary construction.",
+              zh: "这一区分涉及可观测量的字典，以及边界态之间的配对。表示标签和局部初级态条件本身不能确定这些数据，因此每一种边界构造都需要明确指定配对与厄米共轭。",
+            },
+          ],
           characteristics: [
             {
               label: { en: "Dictionary", zh: "对应的对象" },
@@ -107,6 +113,12 @@ export const researchAreas: ResearchArea[] = [
               zh: "典型的 Carroll 实现采用最高权 BMS 模，并独立指定边界配对。最高权表示的径向共轭不会自动等同于体物理共轭。因此，建立这种配对并明确它在关联函数中的作用，本身就是构建边界描述的一部分。",
             },
           ],
+          notes: [
+            {
+              en: "Ordinary and modified Mellin transforms relate celestial and Carrollian descriptions of scattering data. With complete data wherever inversion exists, they give equivalent amplitude dictionaries. The physical adjoint can be transported through the transform; a radial highest-weight pairing is an additional boundary prescription. Equivalence of the amplitude dictionaries alone does not identify the full boundary theories or their pairings.",
+              zh: "通常及修正的 Mellin 变换将天球与 Carroll 描述中的散射数据联系起来。在保留完整数据且变换可逆的范围内，它们给出等价的振幅字典。物理共轭可以随变换一起传递，而径向最高权配对是额外的边界选取。仅有振幅字典的等价，还不能认同完整的边界理论及其配对。",
+            },
+          ],
           characteristics: [
             {
               label: { en: "Dictionary", zh: "对应的对象" },
@@ -121,16 +133,6 @@ export const researchAreas: ResearchArea[] = [
               detail: { en: "One temporal regulator uses spacelike surfaces t = ±T to specify incoming and outgoing data, with the scattering limit T → ∞.", zh: "一种时间截断以类空截面 t = ±T 指定入射与出射数据，并以 T → ∞ 趋向散射极限。" },
             },
           ],
-        },
-      ],
-      conclusion: [
-        {
-          en: "The distinction concerns the observable dictionary together with the pairing of boundary states. Representation labels and local primary conditions alone do not fix these data. The pairing and Hermitian conjugation must therefore be stated as part of each boundary construction.",
-          zh: "这一区分涉及可观测量的字典，以及边界态之间的配对。表示标签和局部初级态条件本身不能确定这些数据，因此每一种边界构造都需要明确指定配对与厄米共轭。",
-        },
-        {
-          en: "Ordinary and modified Mellin transforms relate celestial and Carrollian descriptions of scattering data. With complete data wherever inversion exists, they give equivalent amplitude dictionaries. The physical adjoint can be transported through the transform; a radial highest-weight pairing is an additional boundary prescription. Equivalence of the amplitude dictionaries alone does not identify the full boundary theories or their pairings.",
-          zh: "通常及修正的 Mellin 变换将天球与 Carroll 描述中的散射数据联系起来。在保留完整数据且变换可逆的范围内，它们给出等价的振幅字典。物理共轭可以随变换一起传递，而径向最高权配对是额外的边界选取。仅有振幅字典的等价，还不能认同完整的边界理论及其配对。",
         },
       ],
       focus: {

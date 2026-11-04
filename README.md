@@ -40,8 +40,9 @@ Type I Hilbert-space duality and Type II amplitude duality. The distinction is
 introduced through two comparison cards, followed by a statement of the
 Type II construction program and its relation to the concrete research projects.
 The initial view is concise; native disclosures keep each type's detailed
-discussion, equations, and figure inside its card. Shared conventions and
-individual research projects can be expanded separately. A concrete Type I
+discussion, equations, and figure inside its card. Pairing conventions are
+included with their respective types, and the Mellin dictionary belongs to
+Type II. Each figure has its own expandable coordinate explanation. A concrete Type I
 reconstruction map is not assumed to be unitary: its domain, normalization,
 pairing, and possible Hilbert-space realization require separate analysis.
 The framework includes the note's original vector cutoff diagrams and KaTeX

@@ -563,7 +563,6 @@ html:lang(zh-CN) .research-trigger-copy strong {
 }
 
 .framework-intro p,
-.dictionary-conclusion p,
 .holography-focus p {
   color: #4f5955;
   line-height: 1.8;
@@ -572,7 +571,6 @@ html:lang(zh-CN) .research-trigger-copy strong {
 }
 
 .framework-intro p + p,
-.dictionary-conclusion p + p,
 .holography-focus p + p {
   margin-top: 18px;
 }
@@ -650,10 +648,6 @@ html:lang(zh-CN) .research-trigger-copy strong {
   margin: 0;
 }
 
-.dictionary-conclusion p {
-  font-size: 0.91rem;
-}
-
 .dictionary-details {
   border-top: 1px solid var(--line);
   margin-top: 22px;
@@ -687,14 +681,13 @@ html:lang(zh-CN) .research-trigger-copy strong {
   line-height: 1.75;
 }
 
-.framework-notes {
-  border-bottom: 1px solid var(--line);
-  border-top: 1px solid var(--line);
+.dictionary-details > .disclosure-content > .research-equation + p {
   margin-top: 24px;
 }
 
-.framework-notes > .disclosure-content {
-  padding: 8px 0 28px;
+.dictionary-details .coordinate-note {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
 }
 
 .focus-details {

@@ -69,7 +69,6 @@ const copy = {
     coordinates: { en: "Compactified coordinates in the diagrams", zh: "图中的紧化坐标" },
     perspective: { en: "Research perspective", zh: "研究图景" },
     details: { en: "Theory, formulas & figure", zh: "原理、公式与图示" },
-    sharedNotes: { en: "Shared conventions & Mellin dictionary", zh: "共用约定与 Mellin 字典" },
     nextSteps: { en: "Current work & next steps", zh: "当前工作与下一步" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
@@ -379,6 +378,18 @@ export default function Home() {
                                       <ResearchMath equation={dictionaryEquations[type.id]} locale={locale} />
                                     )}
                                     <ResearchMath equation={adjoint} locale={locale} />
+                                    {type.id === "type-ii" && (
+                                      <>
+                                        <p>{pick(locale, pairingComparison.intro)}</p>
+                                        <ResearchMath equation={pairingComparison.equations[2]} locale={locale} />
+                                      </>
+                                    )}
+                                    {type.notes.map((paragraph) => (
+                                      <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                                    ))}
+                                    {type.id === "type-ii" && (
+                                      <ResearchMath equation={mellinDictionary.equation} locale={locale} />
+                                    )}
                                     <figure className="dictionary-figure">
                                       <Image
                                         src={figure.src}
@@ -389,6 +400,14 @@ export default function Home() {
                                       />
                                       <figcaption>{pick(locale, figure.caption)}</figcaption>
                                     </figure>
+                                    <details className="coordinate-note">
+                                      <summary className="disclosure-summary">{pick(locale, copy.research.coordinates)}</summary>
+                                      <p>{pick(locale, cutoffGeometry.intro)}</p>
+                                      <ResearchMath
+                                        equation={{ ...cutoffGeometry.coordinates, id: `${type.id}-${cutoffGeometry.coordinates.id}` }}
+                                        locale={locale}
+                                      />
+                                    </details>
                                   </div>
                                 </details>
                               </article>
@@ -407,30 +426,6 @@ export default function Home() {
                             </div>
                           </details>
                         </section>
-                        <details className="framework-notes">
-                          <summary className="disclosure-summary">{pick(locale, copy.research.sharedNotes)}</summary>
-                          <div className="disclosure-content">
-                            <div className="dictionary-conclusion">
-                              {area.framework.conclusion.map((paragraph) => (
-                                <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                              ))}
-                            </div>
-                            <section className="pairing-comparison" aria-labelledby="pairing-comparison-title">
-                              <h4 id="pairing-comparison-title">{pick(locale, pairingComparison.title)}</h4>
-                              <p>{pick(locale, pairingComparison.intro)}</p>
-                              <ResearchMath equation={pairingComparison.equations[2]} locale={locale} />
-                            </section>
-                            <section className="mellin-dictionary" aria-labelledby="mellin-dictionary-title">
-                              <h4 id="mellin-dictionary-title">{pick(locale, mellinDictionary.title)}</h4>
-                              <ResearchMath equation={mellinDictionary.equation} locale={locale} />
-                            </section>
-                            <details className="coordinate-note">
-                              <summary className="disclosure-summary">{pick(locale, copy.research.coordinates)}</summary>
-                              <p>{pick(locale, cutoffGeometry.intro)}</p>
-                              <ResearchMath equation={cutoffGeometry.coordinates} locale={locale} />
-                            </details>
-                          </div>
-                        </details>
                       </section>
                     )}
                     <div className="research-detail">
