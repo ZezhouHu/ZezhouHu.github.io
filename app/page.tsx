@@ -4,6 +4,9 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { researchVision, researchAreas, futurePrograms, type LocalizedText } from "./research-content";
 import { education, teaching, activities, honors, profile } from "./academic-profile";
+import Image from "next/image";
+import ResearchMath from "./research-math";
+import { dictionaryEquations, cutoffGeometry, pairingComparison, mellinDictionary } from "./holography-visuals";
 
 type Locale = "en" | "zh";
 
@@ -63,6 +66,7 @@ const copy = {
     },
     overview: { en: "The bigger picture", zh: "整体图像" },
     directions: { en: "Concrete research directions", zh: "具体研究方向" },
+    coordinates: { en: "Compactified coordinates in the diagrams", zh: "图中的紧化坐标" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
     close: { en: "Collapse research area", zh: "收起研究方向" },
@@ -349,6 +353,9 @@ export default function Home() {
                               {type.paragraphs.map((paragraph) => (
                                 <p key={paragraph.en}>{pick(locale, paragraph)}</p>
                               ))}
+                              {dictionaryEquations[type.id] && (
+                                <ResearchMath equation={dictionaryEquations[type.id]} locale={locale} />
+                              )}
                               <dl>
                                 {type.characteristics.map((item) => (
                                   <div key={item.label.en}>
@@ -360,11 +367,46 @@ export default function Home() {
                             </article>
                           ))}
                         </div>
+                        <section className="cutoff-geometry" aria-labelledby="cutoff-geometry-title">
+                          <h4 id="cutoff-geometry-title">{pick(locale, cutoffGeometry.title)}</h4>
+                          <p>{pick(locale, cutoffGeometry.intro)}</p>
+                          <div className="cutoff-figure-grid">
+                            {cutoffGeometry.figures.map((figure) => (
+                              <figure key={figure.id}>
+                                <Image
+                                  src={figure.src}
+                                  alt={pick(locale, figure.alt)}
+                                  width={442}
+                                  height={796}
+                                  unoptimized
+                                />
+                                <figcaption>{pick(locale, figure.caption)}</figcaption>
+                              </figure>
+                            ))}
+                          </div>
+                          <details className="coordinate-note">
+                            <summary>{pick(locale, copy.research.coordinates)}</summary>
+                            <ResearchMath equation={cutoffGeometry.coordinates} locale={locale} />
+                          </details>
+                        </section>
+                        <section className="pairing-comparison" aria-labelledby="pairing-comparison-title">
+                          <h4 id="pairing-comparison-title">{pick(locale, pairingComparison.title)}</h4>
+                          <p>{pick(locale, pairingComparison.intro)}</p>
+                          <div className="pairing-equation-grid">
+                            {pairingComparison.equations.map((equation) => (
+                              <ResearchMath key={equation.id} equation={equation} locale={locale} />
+                            ))}
+                          </div>
+                        </section>
                         <div className="dictionary-conclusion">
                           {area.framework.conclusion.map((paragraph) => (
                             <p key={paragraph.en}>{pick(locale, paragraph)}</p>
                           ))}
                         </div>
+                        <section className="mellin-dictionary" aria-labelledby="mellin-dictionary-title">
+                          <h4 id="mellin-dictionary-title">{pick(locale, mellinDictionary.title)}</h4>
+                          <ResearchMath equation={mellinDictionary.equation} locale={locale} />
+                        </section>
                         <section className="holography-focus" aria-labelledby={`focus-title-${area.id}`}>
                           <h4 id={`focus-title-${area.id}`}>{pick(locale, area.framework.focus.title)}</h4>
                           {area.framework.focus.paragraphs.map((paragraph) => (

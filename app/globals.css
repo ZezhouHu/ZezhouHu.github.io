@@ -595,6 +595,151 @@ html:lang(zh-CN) .research-trigger-copy strong {
   font-size: 0.91rem;
 }
 
+.research-equation {
+  border-top: 1px solid var(--line);
+  margin: 24px 0 0;
+  min-width: 0;
+  padding-top: 20px;
+}
+
+.research-equation h5 {
+  color: var(--cyan);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.math-scroll {
+  background: #f5f7f5;
+  border-radius: 4px;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 16px 8px;
+}
+
+.math-scroll:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.math-scroll > .katex-display {
+  margin: 0;
+  min-width: 100%;
+  width: max-content;
+}
+
+.math-scroll .katex {
+  font-size: 1.05em;
+}
+
+.research-equation .math-description,
+.research-equation .math-notation {
+  color: #4f5955;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin: 16px 0 0;
+}
+
+.research-equation .math-notation {
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-top: 12px;
+}
+
+.cutoff-geometry,
+.pairing-comparison,
+.mellin-dictionary {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-top: 30px;
+}
+
+.cutoff-geometry > h4,
+.pairing-comparison > h4,
+.mellin-dictionary > h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 20px;
+}
+
+html:lang(zh-CN) .cutoff-geometry > h4,
+html:lang(zh-CN) .pairing-comparison > h4,
+html:lang(zh-CN) .mellin-dictionary > h4 {
+  font-family: "Songti SC", "STSong", Georgia, serif;
+}
+
+.cutoff-geometry > p,
+.pairing-comparison > p {
+  color: #4f5955;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 92ch;
+}
+
+.cutoff-figure-grid,
+.pairing-equation-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  margin: 28px 0 24px;
+}
+
+.pairing-equation-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cutoff-figure-grid figure {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin: 0;
+  min-width: 0;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.cutoff-figure-grid img {
+  display: block;
+  height: auto;
+  margin: 0 auto 24px;
+  max-width: 320px;
+  width: 100%;
+}
+
+.cutoff-figure-grid figcaption {
+  color: #4f5955;
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.coordinate-note summary {
+  color: var(--cyan);
+  cursor: pointer;
+  font-size: 0.83rem;
+  font-weight: 750;
+  padding: 14px 0;
+}
+
+.pairing-equation-grid > .research-equation {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin: 0;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.pairing-equation-grid > .research-equation:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.mellin-dictionary > .research-equation {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .holography-focus {
   background: #f7f2ed;
   border-left: 4px solid var(--coral);
@@ -1201,6 +1346,10 @@ footer h2 {
   .research-panel {
     grid-template-columns: 1fr;
     padding: 36px 20px 42px 34px;
+  }
+
+  .pairing-equation-grid {
+    grid-template-columns: 1fr;
   }
 
   .related-work {

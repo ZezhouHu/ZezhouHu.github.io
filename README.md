@@ -39,6 +39,10 @@ The flat-space holography section also incorporates the November 2026 note on
 Type I Hilbert-space duality and Type II amplitude duality. The distinction is
 introduced through two comparison cards, followed by a statement of the
 Type II construction program and its relation to the concrete research projects.
+The framework includes the note's original vector cutoff diagrams and KaTeX
+equations with bilingual definitions. Formula and figure data are maintained in
+`app/holography-visuals.ts`; the math component is `app/research-math.tsx`.
+The renderer, styles, fonts, and figures are served with the site.
 
 Education, teaching, academic activities, honors, and personal interests live
 in `app/academic-profile.ts`, following the academic CV updated on 8 October
