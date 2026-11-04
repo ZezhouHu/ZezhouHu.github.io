@@ -378,12 +378,6 @@ export default function Home() {
                                       <ResearchMath equation={dictionaryEquations[type.id]} locale={locale} />
                                     )}
                                     <ResearchMath equation={adjoint} locale={locale} />
-                                    {type.id === "type-ii" && (
-                                      <>
-                                        <p>{pick(locale, pairingComparison.intro)}</p>
-                                        <ResearchMath equation={pairingComparison.equations[2]} locale={locale} />
-                                      </>
-                                    )}
                                     {type.notes.map((paragraph) => (
                                       <p key={paragraph.en}>{pick(locale, paragraph)}</p>
                                     ))}

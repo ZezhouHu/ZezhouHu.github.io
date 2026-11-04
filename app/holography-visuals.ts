@@ -89,15 +89,8 @@ Y=\frac{V+U}{\pi},\qquad \ell>0.
 };
 
 export const pairingComparison: {
-  title: LocalizedText;
-  intro: LocalizedText;
   equations: ResearchEquation[];
 } = {
-  title: { en: "Physical adjoint and radial pairing", zh: "物理共轭与径向配对" },
-  intro: {
-    en: "The distinction is already visible in the global BMS₄ algebra. Its six L and barred L modes form a complex Lorentz basis, and its four M modes generate translations. Here n = −1, 0, 1 and r, s = ±½. Each conjugation belongs to its own realization; common generator labels do not identify the corresponding physical Hilbert spaces.",
-    zh: "这一区别在 BMS₄ 的整体子代数中已可看出：六个 L 与带横线的 L 模式组成 Lorentz 生成元的复基，四个 M 模式生成平移。此处 n = −1、0、1，r、s = ±½。两种共轭分别属于各自的实现，共用生成元标签并不意味着相应的物理 Hilbert 空间相同。",
-  },
   equations: [
     {
       id: "global-physical-adjoint",
@@ -120,35 +113,17 @@ M_{r,s}^\dagger&=M_{s,r}.
       id: "global-radial-conjugation",
       title: { en: "Radial highest-weight conjugation", zh: "径向最高权共轭" },
       latex: String.raw`\begin{aligned}
-L_n^\ddagger&=L_{-n},\\
-\bar L_n^\ddagger&=\bar L_{-n},\\
-M_{r,s}^\ddagger&=M_{-r,-s}.
+L_n^\dagger&=L_{-n},\\
+\bar L_n^\dagger&=\bar L_{-n},\\
+M_{r,s}^\dagger&=M_{-r,-s}.
 \end{aligned}`,
       description: {
-        en: "The boundary pairing specifies this radial conjugation for highest-weight modules. Its relation to the physical bulk adjoint must be established within the chosen construction.",
-        zh: "边界配对为最高权模指定了这一径向共轭。它与体物理共轭的关系，需要在具体构造中确定。",
+        en: "Here † denotes the radial conjugation defined by the boundary pairing on highest-weight modules. It differs from the bulk physical adjoint shown in Type I.",
+        zh: "这里 † 表示由最高权模的边界配对定义的径向共轭，与 Type I 中展示的体物理共轭不同。",
       },
       notation: {
-        en: "‡ is anti-linear and reverses product order. L and barred L label the global Lorentz modes; M labels translations. Here n = −1, 0, 1 and r, s = ±½.",
-        zh: "‡ 表示反线性且反转乘积顺序的共轭。L 与带横线的 L 标记整体 Lorentz 模式，M 标记平移；此处 n = −1、0、1，r、s = ±½。",
-      },
-    },
-    {
-      id: "global-translation-conjugations",
-      title: { en: "One translation mode, two conjugations", zh: "一个平移模式的两种共轭" },
-      latex: String.raw`\begin{aligned}
-M_{-\frac12,-\frac12}^{\dagger}
-&=M_{-\frac12,-\frac12},\\
-M_{-\frac12,-\frac12}^{\ddagger}
-&=M_{\frac12,\frac12}.
-\end{aligned}`,
-      description: {
-        en: "The physical adjoint fixes this translation mode, whereas radial conjugation exchanges it with the mode of opposite indices. The example makes the difference between the two prescriptions explicit.",
-        zh: "物理共轭使这一平移模式保持不变，径向共轭则将它变为两个指标符号相反的模式。这个例子直接展示了两种共轭选取的差异。",
-      },
-      notation: {
-        en: "The comparison is between actions on generator labels. States and momentum operators remain defined within their respective realizations.",
-        zh: "此处比较的是共轭对生成元标签的作用；态与动量算符仍在各自的实现中定义。",
+        en: "This conjugation is anti-linear and reverses product order. L and barred L label the global Lorentz modes; M labels translations. Here n = −1, 0, 1 and r, s = ±½.",
+        zh: "这一共轭是反线性的，并反转乘积顺序。L 与带横线的 L 标记整体 Lorentz 模式，M 标记平移；此处 n = −1、0、1，r、s = ±½。",
       },
     },
   ],
