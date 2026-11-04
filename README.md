@@ -35,6 +35,11 @@ describing results, work in preparation, and concrete next steps. QFT in Klein
 space and with multiple time directions is included under holography beyond
 AdS/CFT. Black hole imaging appears last as earlier work.
 
+The flat-space holography section also incorporates the November 2026 note on
+Type I Hilbert-space duality and Type II amplitude duality. The distinction is
+introduced through two comparison cards, followed by a statement of the
+Type II construction program and its relation to the concrete research projects.
+
 Education, teaching, academic activities, honors, and personal interests live
 in `app/academic-profile.ts`, following the academic CV updated on 8 October
 2026. The homepage retains the existing approved public contact details.

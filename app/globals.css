@@ -366,6 +366,7 @@ html:lang(zh-CN) footer h2 {
   border-bottom: 1px solid var(--line);
   color: var(--ink);
   position: relative;
+  scroll-margin-top: 88px;
 }
 
 .research-item::before {
@@ -487,6 +488,132 @@ html:lang(zh-CN) .research-trigger-copy strong {
   font-weight: 800;
   margin: 0 0 20px;
   text-transform: uppercase;
+}
+
+.holography-framework {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.framework-intro h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+
+.framework-intro p,
+.dictionary-conclusion p,
+.holography-focus p {
+  color: #4f5955;
+  line-height: 1.8;
+  margin: 0;
+  max-width: 92ch;
+}
+
+.framework-intro p + p,
+.dictionary-conclusion p + p,
+.holography-focus p + p {
+  margin-top: 18px;
+}
+
+.dictionary-grid {
+  align-items: start;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+  margin: 32px 0 24px;
+}
+
+.dictionary-card {
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--cyan);
+  border-radius: 4px;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.dictionary-type-ii {
+  border-top-color: var(--coral);
+}
+
+.dictionary-card h4 {
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.dictionary-type-ii h4 {
+  color: var(--coral);
+}
+
+.dictionary-card p {
+  color: #4f5955;
+  font-size: 0.92rem;
+  line-height: 1.78;
+  margin: 16px 0 0;
+}
+
+.dictionary-card .dictionary-subtitle {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  margin: 0 0 20px;
+}
+
+.dictionary-card dl {
+  margin: 24px 0 0;
+}
+
+.dictionary-card dl > div {
+  border-top: 1px solid var(--line);
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.dictionary-card dt {
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.dictionary-card dd {
+  color: #4f5955;
+  font-size: 0.87rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.dictionary-conclusion p {
+  font-size: 0.91rem;
+}
+
+.holography-focus {
+  background: #f7f2ed;
+  border-left: 4px solid var(--coral);
+  margin-top: 32px;
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.holography-focus h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 22px;
+}
+
+html:lang(zh-CN) .framework-intro h3,
+html:lang(zh-CN) .dictionary-card .dictionary-subtitle,
+html:lang(zh-CN) .holography-focus h4 {
+  font-family: "Songti SC", "STSong", Georgia, serif;
 }
 
 .research-overview > p,

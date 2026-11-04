@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { researchVision, researchAreas, futurePrograms, type LocalizedText } from "./research-content";
 import { education, teaching, activities, honors, profile } from "./academic-profile";
@@ -8,6 +8,18 @@ import { education, teaching, activities, honors, profile } from "./academic-pro
 type Locale = "en" | "zh";
 
 const pick = (locale: Locale, text: LocalizedText) => text[locale];
+
+const subscribeToResearchHash = (onChange: () => void) => {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+};
+const getResearchHash = () => window.location.hash;
+const getServerResearchHash = () => "";
+
+const selectResearch = (id: string | null) => {
+  window.history.replaceState(window.history.state, "", id ? `#research-${id}` : "#research");
+  window.dispatchEvent(new Event("hashchange"));
+};
 
 const copy = {
   nav: {
@@ -50,6 +62,7 @@ const copy = {
       zh: "我结合对称性分析与量子化，具体构造场、量子态与振幅。两条主要方向是超越 AdS/CFT 的全息对应，以及无张力弦与膜的量子理论。",
     },
     overview: { en: "The bigger picture", zh: "整体图像" },
+    directions: { en: "Concrete research directions", zh: "具体研究方向" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
     close: { en: "Collapse research area", zh: "收起研究方向" },
@@ -168,7 +181,7 @@ const publications = [
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
-  const [openResearch, setOpenResearch] = useState<string | null>(null);
+  const researchHash = useSyncExternalStore(subscribeToResearchHash, getResearchHash, getServerResearchHash);
   const isZh = locale === "zh";
 
   useEffect(() => {
@@ -283,13 +296,14 @@ export default function Home() {
 
         <div className="research-accordion">
           {researchAreas.map((area) => {
-            const isOpen = openResearch === area.id;
+            const isOpen = researchHash === `#research-${area.id}`;
             const buttonId = `research-button-${area.id}`;
             const panelId = `research-panel-${area.id}`;
 
             return (
               <article
                 className={`research-item ${area.tone}${isOpen ? " is-open" : ""}`}
+                id={`research-${area.id}`}
                 key={area.id}
               >
                 <button
@@ -299,7 +313,7 @@ export default function Home() {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   aria-label={`${isOpen ? pick(locale, copy.research.close) : pick(locale, copy.research.open)}: ${pick(locale, area.title)}`}
-                  onClick={() => setOpenResearch(isOpen ? null : area.id)}
+                  onClick={() => selectResearch(isOpen ? null : area.id)}
                 >
                   <span className="research-index">{area.index}</span>
                   <span className="research-trigger-copy">
@@ -316,13 +330,60 @@ export default function Home() {
                     role="region"
                     aria-labelledby={buttonId}
                   >
+                    {area.framework && (
+                      <section
+                        className="holography-framework"
+                        aria-labelledby={`framework-title-${area.id}`}
+                      >
+                        <div className="framework-intro">
+                          <h3 id={`framework-title-${area.id}`}>{pick(locale, area.framework.title)}</h3>
+                          {area.framework.intro.map((paragraph) => (
+                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                          ))}
+                        </div>
+                        <div className="dictionary-grid">
+                          {area.framework.types.map((type) => (
+                            <article className={`dictionary-card dictionary-${type.id}`} key={type.id}>
+                              <h4>{pick(locale, type.title)}</h4>
+                              <p className="dictionary-subtitle">{pick(locale, type.subtitle)}</p>
+                              {type.paragraphs.map((paragraph) => (
+                                <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                              ))}
+                              <dl>
+                                {type.characteristics.map((item) => (
+                                  <div key={item.label.en}>
+                                    <dt>{pick(locale, item.label)}</dt>
+                                    <dd>{pick(locale, item.detail)}</dd>
+                                  </div>
+                                ))}
+                              </dl>
+                            </article>
+                          ))}
+                        </div>
+                        <div className="dictionary-conclusion">
+                          {area.framework.conclusion.map((paragraph) => (
+                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                          ))}
+                        </div>
+                        <section className="holography-focus" aria-labelledby={`focus-title-${area.id}`}>
+                          <h4 id={`focus-title-${area.id}`}>{pick(locale, area.framework.focus.title)}</h4>
+                          {area.framework.focus.paragraphs.map((paragraph) => (
+                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                          ))}
+                        </section>
+                      </section>
+                    )}
                     <div className="research-detail">
-                      <div className="research-overview">
+                      {area.framework ? (
+                        <h3 className="panel-label">{pick(locale, copy.research.directions)}</h3>
+                      ) : (
+                        <div className="research-overview">
                         <h3 className="panel-label">{pick(locale, copy.research.overview)}</h3>
                         {area.overview.map((paragraph) => (
                           <p key={paragraph.en}>{pick(locale, paragraph)}</p>
                         ))}
-                      </div>
+                        </div>
+                      )}
                       {area.sections.map((section) => (
                         <section className="research-topic" key={section.title.en}>
                           <h3>{pick(locale, section.title)}</h3>

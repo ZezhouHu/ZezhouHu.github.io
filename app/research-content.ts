@@ -11,6 +11,19 @@ export type ResearchArea = {
   tone: string;
   title: LocalizedText;
   summary: LocalizedText;
+  framework?: {
+    title: LocalizedText;
+    intro: LocalizedText[];
+    types: {
+      id: string;
+      title: LocalizedText;
+      subtitle: LocalizedText;
+      paragraphs: LocalizedText[];
+      characteristics: { label: LocalizedText; detail: LocalizedText }[];
+    }[];
+    conclusion: LocalizedText[];
+    focus: { title: LocalizedText; paragraphs: LocalizedText[] };
+  };
   overview: LocalizedText[];
   sections: ResearchSection[];
   topics: { en: string[]; zh: string[] };
@@ -35,13 +48,105 @@ export const researchAreas: ResearchArea[] = [
     tone: "coral",
     title: { en: "Holography beyond AdS/CFT", zh: "超越 AdS/CFT 的全息对应" },
     summary: {
-      en: "From boundary representations to local fields and physical particles in flat and de Sitter spacetime, with quantum states made explicit across signatures.",
-      zh: "从边界表示走向平直与 de Sitter 时空中的局域场和物理粒子，并明确不同时空号差下的量子态。",
+      en: "Building Type II flat-space holography: from Carrollian boundary operators to asymptotic states, scattering data, and a dictionary for interactions.",
+      zh: "构建 Type II 平直全息：从 Carroll 边界算符走向渐近态、散射数据与相互作用的全息字典。",
+    },
+    framework: {
+      title: { en: "Two dictionaries for flat-space holography", zh: "平直全息的两类字典" },
+      intro: [
+        {
+          en: "How should a boundary quantum theory describe gravity in asymptotically flat spacetime? A Carrollian theory at null infinity offers a candidate, but the intended dictionary must be specified. I distinguish two approaches by what they identify between bulk and boundary: the physical quantum theory itself, or its scattering amplitudes. Here Type I and Type II name this distinction between holographic dictionaries.",
+          zh: "边界量子理论应当如何描述渐近平直时空中的引力？零无穷远处的 Carroll 理论提供了一个候选，但首先需要明确所要建立的字典。我根据体与边界之间对应的对象，区分两条途径：对应物理量子理论本身，或对应它的散射振幅。这里 Type I 与 Type II 指全息字典的这一区别。",
+        },
+      ],
+      types: [
+        {
+          id: "type-i",
+          title: { en: "Type I", zh: "Type I" },
+          subtitle: { en: "Hilbert-space duality", zh: "Hilbert 空间对偶" },
+          paragraphs: [
+            {
+              en: "Bulk and boundary describe the same physical quantum theory, matching state spaces, inner products, and physical Hermitian conjugation. Conventional AdS/CFT has this character; a flat limit that preserves this correspondence remains Type I.",
+              zh: "体与边界描述同一个物理量子理论，态空间、内积和物理厄米共轭相互对应。通常的 AdS/CFT 具有这一性质；保留这种对应关系的平直极限仍属于 Type I。",
+            },
+            {
+              en: "Unitary induced representations arise naturally: the AdS₃/CFT₂ flat contraction takes Virasoro highest-weight modules to induced BMS₃ representations. Bulk local observables become generally nonlocal boundary operators. The criterion is the physical dictionary, rather than a representation label alone.",
+              zh: "幺正诱导表示在这一路径中自然出现：AdS₃/CFT₂ 的平直收缩将 Virasoro 最高权模变为诱导 BMS₃ 表示。体局域可观测量一般对应边界上的非局域算符。判断依据在于物理字典，不能仅凭表示的标签。",
+            },
+          ],
+          characteristics: [
+            {
+              label: { en: "Dictionary", zh: "对应的对象" },
+              detail: { en: "Physical states, their inner products, and their adjoints are preserved.", zh: "保留物理态、态的内积及其共轭关系。" },
+            },
+            {
+              label: { en: "Typical realization", zh: "典型实现" },
+              detail: { en: "Induced representations carrying the bulk physical adjoint.", zh: "携带体物理共轭的诱导表示。" },
+            },
+            {
+              label: { en: "Regulator picture", zh: "截断面的几何图像" },
+              detail: { en: "One radial regulator uses a timelike worldtube r = R and takes R → ∞ while retaining boundary time evolution.", zh: "一种径向截断以类时世界管 r = R 限制空间范围，在 R → ∞ 时保留边界时间演化。" },
+            },
+          ],
+        },
+        {
+          id: "type-ii",
+          title: { en: "Type II", zh: "Type II" },
+          subtitle: { en: "Amplitude duality", zh: "振幅对偶" },
+          paragraphs: [
+            {
+              en: "Boundary correlation functions encode transitions between asymptotic bulk in- and out-states, after transforming scattering data into boundary variables. This matches amplitudes without requiring the bulk and boundary Hilbert spaces to be identified.",
+              zh: "将散射数据变换到边界变量后，边界关联函数编码体渐近入态与出态之间的跃迁。这一字典对应的是振幅，并不要求将体与边界的 Hilbert 空间认作同一个空间。",
+            },
+            {
+              en: "A typical Carrollian realization uses highest-weight BMS modules and an independently specified boundary pairing. Radial highest-weight conjugation is not automatically the physical bulk adjoint. Establishing that pairing and its role in correlators is therefore part of constructing the boundary description.",
+              zh: "典型的 Carroll 实现采用最高权 BMS 模，并独立指定边界配对。最高权表示的径向共轭不会自动等同于体物理共轭。因此，建立这种配对并明确它在关联函数中的作用，本身就是构建边界描述的一部分。",
+            },
+          ],
+          characteristics: [
+            {
+              label: { en: "Dictionary", zh: "对应的对象" },
+              detail: { en: "Asymptotic in/out amplitudes are encoded as boundary correlators.", zh: "将渐近入态与出态的振幅编码为边界关联函数。" },
+            },
+            {
+              label: { en: "Typical realization", zh: "典型实现" },
+              detail: { en: "Highest-weight modules with a boundary-defined pairing and conjugation.", zh: "具有在边界上独立指定的配对与共轭的最高权模。" },
+            },
+            {
+              label: { en: "Regulator picture", zh: "截断面的几何图像" },
+              detail: { en: "One temporal regulator uses spacelike surfaces t = ±T to specify incoming and outgoing data, with the scattering limit T → ∞.", zh: "一种时间截断以类空截面 t = ±T 指定入射与出射数据，并以 T → ∞ 趋向散射极限。" },
+            },
+          ],
+        },
+      ],
+      conclusion: [
+        {
+          en: "The distinction concerns the observable dictionary together with the pairing of boundary states. Representation labels and local primary conditions alone do not fix these data. The pairing and Hermitian conjugation must therefore be stated as part of each boundary construction.",
+          zh: "这一区分涉及可观测量的字典，以及边界态之间的配对。表示标签和局部初级态条件本身不能确定这些数据，因此每一种边界构造都需要明确指定配对与厄米共轭。",
+        },
+        {
+          en: "Ordinary and modified Mellin transforms relate celestial and Carrollian descriptions of scattering data. With complete data wherever inversion exists, they give equivalent amplitude dictionaries. The physical adjoint can be transported through the transform; a radial highest-weight pairing is an additional boundary prescription. Equivalence of the amplitude dictionaries alone does not identify the full boundary theories or their pairings.",
+          zh: "通常及修正的 Mellin 变换将天球与 Carroll 描述中的散射数据联系起来。在保留完整数据且变换可逆的范围内，它们给出等价的振幅字典。物理共轭可以随变换一起传递，而径向最高权配对是额外的边界选取。仅有振幅字典的等价，还不能认同完整的边界理论及其配对。",
+        },
+      ],
+      focus: {
+        title: { en: "My focus: building Type II flat-space holography", zh: "我的主线：构建 Type II 平直全息" },
+        paragraphs: [
+          {
+            en: "I aim to develop a boundary description in which bulk scattering is organized by Carrollian operators and their correlators. The construction must specify the transform from asymptotic data, the boundary operator/state framework and pairing, and how incoming and outgoing states enter correlation functions. Highest-weight bulk reconstruction supplies an established free-field operator framework; a complete interacting S-matrix dual remains a goal.",
+            zh: "我的目标是发展一种边界描述，用 Carroll 算符及其关联函数组织体散射。这一构造需要明确渐近数据的变换、边界算符与态的框架及其配对，以及入态和出态如何进入关联函数。最高权体重构已提供自由场层面的算符框架；完整的相互作用 S 矩阵对偶仍是有待实现的目标。",
+          },
+          {
+            en: "The immediate program connects that framework to physical Lorentzian particles and observables, including massive modes, explicit state and contour prescriptions, and tests through two-point functions and limiting cases. Extensions to spin and higher-point functions will probe interactions. The temporal-boundary viewpoint of de Sitter holography provides a complementary comparison for this program, with the relevant dictionary and state choices kept explicit.",
+            zh: "近期计划将这一框架联系到 Lorentz 号差下的物理粒子与可观测量，包括有质量模式、明确的态与围道选取，以及两点函数和极限情形的检验。向有自旋的场和高点函数推广，将进一步探查相互作用。de Sitter 全息的时间边界视角为这一计划提供互补参照，同时需要始终明确相应字典与态的选取。",
+          },
+        ],
+      },
     },
     overview: [
       {
-        en: "Extending holography requires understanding how it changes with spacetime’s causal and boundary structure. In asymptotically flat spacetime, a Carrollian conformal field theory at null infinity offers a candidate description of bulk physics. My central question is how its representations and states encode propagating particles and local observables. I approach this through bulk reconstruction, while de Sitter holography and QFT with non-standard signatures provide complementary settings for examining the roles of analytic continuation, boundary conditions, and quantum states.",
-        zh: "推广全息对应需要理解它如何随时空的因果结构与边界结构而改变。在渐近平直时空中，零无穷远处的 Carroll 共形场论提供了一种候选的体物理描述。我的核心问题是：它的表示与量子态如何编码传播中的粒子和局域可观测量？我通过体重构来研究这一问题，同时利用 de Sitter 全息与非标准号差下的量子场论，从互补角度考察解析延拓、边界条件和量子态的作用。",
+        en: "My work develops the free-field operator framework and the state prescriptions needed for a Type II flat-space dictionary, with de Sitter holography and QFT across signatures providing complementary tools and tests.",
+        zh: "我的工作发展 Type II 平直全息字典所需的自由场算符框架与态选取，并以 de Sitter 全息及跨号差量子场论提供互补工具和检验。",
       },
     ],
     sections: [
@@ -49,8 +154,8 @@ export const researchAreas: ResearchArea[] = [
         title: { en: "Local fields from a Carrollian boundary", zh: "从 Carroll 边界重构局域场" },
         paragraphs: [
           {
-            en: "In our published work on flat-space bulk reconstruction, we constructed massless free bulk fields from the highest-weight representation of a boundary Carrollian conformal field theory. Expressing a bulk field through descendants of a boundary primary gives an explicit bulk–boundary propagator. A nonzero mass enters as an intermediate parameter before the massless limit is taken. This connects boundary representation theory to local bulk propagation and supplies a starting point for a dictionary beyond massless free fields.",
-            zh: "在已发表的平直时空体重构工作中，我们从边界 Carroll 共形场论的最高权表示构造了无质量自由体场。将体场表示为边界初级态的后裔，得到显式的体–边界传播子；构造中先引入非零质量作为中间参数，再取无质量极限。这将边界表示论与局域体传播联系起来，也为超越无质量自由场的全息字典提供了出发点。",
+            en: "In our published work on flat-space bulk reconstruction, we constructed massless free bulk fields from the highest-weight representation of a boundary Carrollian conformal field theory. Expressing a bulk field through descendants of a boundary primary gives an explicit bulk–boundary propagator. A nonzero mass enters as an intermediate parameter before the massless limit is taken. This connects boundary representation theory to local bulk propagation and develops the free-field operator framework relevant to the Type II program. These operator constructions supply concrete building blocks for relating boundary correlators to bulk transition amplitudes.",
+            zh: "在已发表的平直时空体重构工作中，我们从边界 Carroll 共形场论的最高权表示构造了无质量自由体场。将体场表示为边界初级态的后裔，得到显式的体–边界传播子；构造中先引入非零质量作为中间参数，再取无质量极限。这将边界表示论与局域体传播联系起来，发展了 Type II 计划所需的自由场算符框架，为将边界关联函数联系到体跃迁振幅提供了具体构件。",
           },
         ],
       },
@@ -58,8 +163,8 @@ export const researchAreas: ResearchArea[] = [
         title: { en: "Massive particles: current work and next tests", zh: "有质量粒子：当前工作与下一步检验" },
         paragraphs: [
           {
-            en: "In Massive Particles in Carrollian Holography, now in preparation, we extend this construction to a four-dimensional massive scalar. A smear function relates bulk modes to a Carrollian representation with a nonzero mass Casimir. Within this construction, real support requires continuation to Klein spacetime with signature (2,2). The transform is local on analytically continuable data; a physical one-particle Hilbert-space dictionary remains open. The next tests concern Lorentzian states and observables, integration contours and analytic domains, bulk and boundary two-point functions, and the massless limit. These tests will guide extensions to fields with spin and interactions.",
-            zh: "在准备中的 Massive Particles in Carrollian Holography 中，我们将这一构造推广到四维有质量标量场，以涂抹函数将体模式与具有非零质量 Casimir 的 Carroll 表示联系起来。在这一构造中，实支撑要求延拓到号差为 (2,2) 的 Klein 时空。当前变换局部定义在可解析延拓的数据上；物理单粒子 Hilbert 空间上的字典仍待建立。下一步将检验它与 Lorentz 号差下量子态及可观测量的联系，考察积分围道和解析域、体与边界两点函数，以及无质量极限。这些检验将指导向有自旋的场和相互作用推广。",
+            en: "In Massive Particles in Carrollian Holography, now in preparation, we extend this construction to a four-dimensional massive scalar. A smear function relates bulk modes to a Carrollian representation with a nonzero mass Casimir. Within this construction, real support requires continuation to Klein spacetime with signature (2,2). The transform is local on analytically continuable data; its extension to physical Lorentzian one-particle data remains open. For the Type II program, the task is to identify how physical in/out states and observables enter the boundary dictionary, with the boundary pairing specified independently. The next tests concern integration contours and analytic domains, bulk and boundary two-point functions, and the massless limit. These tests will guide extensions to spin and interactions.",
+            zh: "在准备中的 Massive Particles in Carrollian Holography 中，我们将这一构造推广到四维有质量标量场，以涂抹函数将体模式与具有非零质量 Casimir 的 Carroll 表示联系起来。在这一构造中，实支撑要求延拓到号差为 (2,2) 的 Klein 时空。当前变换局部定义在可解析延拓的数据上；能否扩展到 Lorentz 号差下的物理单粒子数据，仍是开放问题。在 Type II 计划中，需要明确物理入态、出态与可观测量如何进入边界字典，同时独立指定边界配对。下一步将考察积分围道和解析域、体与边界两点函数，以及无质量极限。这些检验将指导向自旋和相互作用推广。",
           },
         ],
       },
@@ -67,8 +172,8 @@ export const researchAreas: ResearchArea[] = [
         title: { en: "Quantum field theory with multiple times", zh: "多时间方向的量子场论" },
         paragraphs: [
           {
-            en: "To interpret continuation across signatures, we developed QFT in Klein spacetime, using the radial coordinate in its timelike plane as an evolution parameter. Canonical quantization requires modes beyond ordinary plane waves. We derived a free two-point function and an LSZ reduction formula, alongside a path-integral description with an explicit vacuum prescription. Our extension to flat spacetimes with more general multi-time signatures gives results consistent with continuation from Minkowski space. These constructions make mode expansions and state choices explicit, providing tools for interpreting bulk–boundary maps across signatures.",
-            zh: "为理解跨号差的延拓，我们构建了 Klein 时空中的量子场论，以类时平面中的径向坐标作为演化参数。正则量子化需要普通平面波之外的模式。我们推导了自由两点函数与 LSZ 约化公式，并建立了明确指定真空的路径积分描述。进一步推广到具有更一般多时间号差的平直时空后，结果与从 Minkowski 时空延拓所得结果一致。这些构造明确了模式展开和态的选取，为解释跨号差的体–边界映射提供了工具。",
+            en: "To interpret continuation across signatures, we developed QFT in Klein spacetime, using the radial coordinate in its timelike plane as an evolution parameter. Canonical quantization requires modes beyond ordinary plane waves. We derived a free two-point function and an LSZ reduction formula, alongside a path-integral description with an explicit vacuum prescription. Our extension to flat spacetimes with more general multi-time signatures gives results consistent with continuation from Minkowski space. These constructions make mode expansions, quantum states, and vacuum choices explicit. They provide tools for connecting continued bulk fields to asymptotic observables and for assessing state and contour prescriptions in a holographic amplitude dictionary.",
+            zh: "为理解跨号差的延拓，我们构建了 Klein 时空中的量子场论，以类时平面中的径向坐标作为演化参数。正则量子化需要普通平面波之外的模式。我们推导了自由两点函数与 LSZ 约化公式，并建立了明确指定真空的路径积分描述。进一步推广到具有更一般多时间号差的平直时空后，结果与从 Minkowski 时空延拓所得结果一致。这些构造明确了模式展开、量子态与真空选取，为将延拓后的体场联系到渐近可观测量，以及评估全息振幅字典中的态与围道选取提供了工具。",
           },
         ],
       },
@@ -76,15 +181,15 @@ export const researchAreas: ResearchArea[] = [
         title: { en: "de Sitter: correlators, entropy, and continuation", zh: "de Sitter：关联函数、熵与延拓" },
         paragraphs: [
           {
-            en: "Our work on flipped AdS/ℤ relates QFT in this spacetime to its de Sitter counterpart and develops a boundary description using a flipped conformal field theory. The extrapolate dictionary produces two-point functions consistent with boundary conformal symmetry. In three dimensions, the boundary Cardy formula reproduces the cosmological-horizon entropies of pure de Sitter and Kerr–de Sitter spacetimes. The next step is controlled continuation of bulk and boundary states, free-field propagators, and boundary conditions, with state and contour prescriptions specified. Fields with spin and higher-point functions will test the dictionary’s range of validity and its relation to physical bulk observables.",
-            zh: "我们关于翻转 AdS/ℤ 的工作将这一时空中的量子场论与 de Sitter 中的量子场论联系起来，并利用翻转共形场论构建边界描述。其外推字典给出与边界共形对称性一致的两点函数。在三维情形下，边界 Cardy 公式再现了纯 de Sitter 和 Kerr–de Sitter 时空的宇宙学视界熵。下一步将明确态与围道的选取，对体和边界量子态、自由场传播子及边界条件进行受控延拓；随后以有自旋的场和高点函数检验字典的适用范围，以及它与物理体可观测量的联系。",
+            en: "Our work on flipped AdS/ℤ relates QFT in this spacetime to its de Sitter counterpart and develops a boundary description using a flipped conformal field theory. The extrapolate dictionary produces two-point functions consistent with boundary conformal symmetry. In three dimensions, the boundary Cardy formula reproduces the cosmological-horizon entropies of pure de Sitter and Kerr–de Sitter spacetimes. The original dS/CFT temporal-boundary prescription, including its description of past-to-future transitions, supplies a useful comparison for the Type II flat-space route. In the flipped-AdS construction, I will track how states, propagators, boundary conditions, and contours behave under controlled continuation. Extensions to spin and higher-point functions will further test the dictionary and its relation to physical bulk observables.",
+            zh: "我们关于翻转 AdS/ℤ 的工作将这一时空中的量子场论与 de Sitter 中的量子场论联系起来，并利用翻转共形场论构建边界描述。其外推字典给出与边界共形对称性一致的两点函数。在三维情形下，边界 Cardy 公式再现了纯 de Sitter 和 Kerr–de Sitter 时空的宇宙学视界熵。原始 dS/CFT 的时间边界方案及其过去到未来跃迁的描述，为 Type II 平直全息途径提供了有益参照。在翻转 AdS 构造中，下一步将考察受控延拓中态、传播子、边界条件与围道的变化。推广到自旋和高点函数，将进一步检验字典及其与物理体可观测量的联系。",
           },
         ],
       },
     ],
     topics: {
-      en: ["Carrollian holography", "Bulk reconstruction", "Massive particles", "de Sitter holography", "Klein space & multiple-time QFT"],
-      zh: ["Carroll 全息", "体重构", "有质量粒子", "de Sitter 全息", "Klein 时空与多时间方向量子场论"],
+      en: ["Type II flat-space holography", "Carrollian holography", "Bulk reconstruction", "Massive particles", "de Sitter holography", "Klein space & multiple-time QFT"],
+      zh: ["Type II 平直全息", "Carroll 全息", "体重构", "有质量粒子", "de Sitter 全息", "Klein 时空与多时间方向量子场论"],
     },
     papers: [
       {
@@ -246,10 +351,10 @@ export const researchAreas: ResearchArea[] = [
 
 export const futurePrograms: { title: LocalizedText; detail: LocalizedText }[] = [
   {
-    title: { en: "A dynamical boundary description of flat spacetime", zh: "平直时空的动力学边界描述" },
+    title: { en: "An interacting Type II dictionary for flat spacetime", zh: "平直时空的相互作用 Type II 字典" },
     detail: {
-      en: "My long-term goal is to understand how boundary states and correlations encode particle interactions and gravitational dynamics within a common description. Explicit field reconstruction provides a foundation for addressing bulk locality, the role of quantum states in defining geometry, and the origin of gravitational entropy. De Sitter holography and QFT with non-standard signatures offer complementary tests of which principles depend on a particular causal structure and which may have wider validity.",
-      zh: "我的长期目标是理解边界量子态与关联函数，如何在统一描述中编码粒子相互作用和引力动力学。显式场重构提供了研究体局域性、量子态在定义几何中的作用，以及引力熵起源的基础。de Sitter 全息与非标准号差下的量子场论将提供互补检验，帮助判断哪些原则依赖特定的因果结构，哪些可能具有更广泛的适用性。",
+      en: "My long-term goal is a Type II boundary description of asymptotically flat spacetime in which correlators encode physical in/out transitions and ultimately interacting gravitational scattering. Building on free-field reconstruction, this requires a precise asymptotic-data transform, boundary operators and states, a specified pairing, and higher-point tests. It will sharpen questions about bulk locality and the relation between quantum states, geometry, and gravitational entropy. De Sitter holography and QFT with non-standard signatures provide complementary tests of continuation and state prescriptions.",
+      zh: "我的长期目标是为渐近平直时空建立 Type II 边界描述，使关联函数编码物理入态与出态之间的跃迁，并最终描述相互作用的引力散射。在自由场重构的基础上，需要明确渐近数据的变换、边界算符与态、指定的配对，以及高点函数检验。这将帮助深化对体局域性，以及量子态、几何和引力熵之间联系的研究。de Sitter 全息与非标准号差下的量子场论，则为延拓和态选取提供互补检验。",
     },
   },
   {
