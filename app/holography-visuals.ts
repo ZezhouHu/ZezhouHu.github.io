@@ -8,29 +8,9 @@ export type ResearchEquation = {
   notation?: LocalizedText;
 };
 
-// The Type I map states the proposed dictionary's requirements. The other
-// formulas follow Flat_Holography_Two_Types/main.tex in its stated conventions.
+// Dictionary formulas are limited to the constructions stated in the note.
+// Type I is illustrated by the physical adjoint below, without assuming a unitary map.
 export const dictionaryEquations: Record<string, ResearchEquation> = {
-  "type-i": {
-    id: "type-i-hilbert-dictionary",
-    title: { en: "A physical Hilbert-space dictionary", zh: "物理 Hilbert 空间的字典" },
-    latex: String.raw`\begin{aligned}
-U:\mathcal H_{\mathrm{bulk}}
-&\xrightarrow{\mathrm{unitary}}\mathcal H_{\partial},\\
-\langle U\psi,U\phi\rangle_{\partial}
-&=\langle\psi,\phi\rangle_{\mathrm{bulk}},\\
-\left(UAU^{-1}\right)^\dagger
-&=UA^\dagger U^{-1}.
-\end{aligned}`,
-    description: {
-      en: "Schematically, Type I requires a unitary identification of physical state spaces that preserves inner products and physical adjoints. This states a requirement on the proposed dictionary, rather than asserting that a particular map U has been constructed.",
-      zh: "示意地说，Type I 要求物理态空间之间存在幺正对应，并保留内积与物理共轭。此式陈述所要求的字典性质，并不表示已经构造出某个具体的映射 U。",
-    },
-    notation: {
-      en: "H denotes a physical Hilbert space; ∂ labels the boundary. ψ and φ are bulk physical states, A is a bulk observable, and † is the physical adjoint in the corresponding space. Operator relations are understood on compatible domains.",
-      zh: "H 表示物理 Hilbert 空间，∂ 标记边界。ψ、φ 为体物理态，A 为体可观测量，† 为相应空间中的物理共轭。算符关系理解为作用在相容的定义域上。",
-    },
-  },
   "type-ii": {
     id: "type-ii-amplitude-dictionary",
     title: { en: "An asymptotic amplitude dictionary", zh: "渐近振幅的字典" },
@@ -121,19 +101,19 @@ export const pairingComparison: {
   equations: [
     {
       id: "global-physical-adjoint",
-      title: { en: "Bulk physical adjoint", zh: "体物理共轭" },
+      title: { en: "Physical adjoint in an induced realization", zh: "诱导实现中的物理共轭" },
       latex: String.raw`\begin{aligned}
 L_n^\dagger&=-\bar L_n,\\
 \bar L_n^\dagger&=-L_n,\\
 M_{r,s}^\dagger&=M_{s,r}.
 \end{aligned}`,
       description: {
-        en: "Hermiticity of the bulk rotations, boosts, and four-momentum gives these physical adjoints, preserved in the induced realization.",
-        zh: "体旋转、boost 与四动量生成元的厄米性给出这些物理共轭关系，并在诱导实现中得到保留。",
+        en: "In the global BMS₄ induced realization used here, these adjoints follow from Hermiticity of the bulk rotations, boosts, and four-momentum.",
+        zh: "在此处采用的 BMS₄ 整体生成元的诱导实现中，这些共轭关系来自体旋转、boost 与四动量生成元的厄米性。",
       },
       notation: {
-        en: "† denotes the physical adjoint. Only the global modes n = −1, 0, 1 and r, s = ±½ are displayed here.",
-        zh: "† 表示物理共轭。此处仅展示 n = −1、0、1，r、s = ±½ 的整体模式。",
+        en: "† denotes the physical adjoint. L and barred L form a complex Lorentz basis, while M labels translations. Only n = −1, 0, 1 and r, s = ±½ are displayed.",
+        zh: "† 表示物理共轭。L 与带横线的 L 组成 Lorentz 生成元的复基，M 标记平移；此处仅展示 n = −1、0、1，r、s = ±½ 的整体模式。",
       },
     },
     {
@@ -149,8 +129,8 @@ M_{r,s}^\ddagger&=M_{-r,-s}.
         zh: "通常的径向最高权共轭由边界配对指定，是与体物理共轭相区别的选取。",
       },
       notation: {
-        en: "‡ denotes an anti-linear conjugation that reverses product order. The comparison is restricted to n = −1, 0, 1 and r, s = ±½.",
-        zh: "‡ 表示反线性且反转乘积顺序的共轭。比较限于 n = −1、0、1，r、s = ±½。",
+        en: "‡ is anti-linear and reverses product order. L and barred L label the global Lorentz modes; M labels translations. Here n = −1, 0, 1 and r, s = ±½.",
+        zh: "‡ 表示反线性且反转乘积顺序的共轭。L 与带横线的 L 标记整体 Lorentz 模式，M 标记平移；此处 n = −1、0、1，r、s = ±½。",
       },
     },
     {

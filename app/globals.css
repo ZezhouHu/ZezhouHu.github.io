@@ -358,6 +358,65 @@ html:lang(zh-CN) footer h2 {
   margin: 0;
 }
 
+.disclosure-summary {
+  align-items: center;
+  color: var(--cyan);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.83rem;
+  font-weight: 750;
+  gap: 16px;
+  justify-content: space-between;
+  line-height: 1.55;
+  list-style: none;
+  padding: 16px 0;
+}
+
+.disclosure-summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure-summary::after {
+  content: "+";
+  flex: none;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+details[open] > .disclosure-summary::after {
+  content: "−";
+}
+
+.disclosure-summary:hover {
+  color: var(--coral);
+}
+
+.disclosure-summary:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.disclosure-content > p {
+  color: #4f5955;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.disclosure-content > p + p {
+  margin-top: 18px;
+}
+
+.research-vision-disclosure {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin-bottom: 36px;
+}
+
+.research-vision-disclosure .research-vision {
+  margin: 10px 0 28px;
+}
+
 .research-accordion {
   border-top: 1px solid var(--line);
 }
@@ -595,6 +654,58 @@ html:lang(zh-CN) .research-trigger-copy strong {
   font-size: 0.91rem;
 }
 
+.dictionary-details {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+}
+
+.dictionary-details > .disclosure-content {
+  padding-top: 8px;
+}
+
+.dictionary-details .disclosure-content > p {
+  margin: 0 0 18px;
+}
+
+.dictionary-figure {
+  border-top: 1px solid var(--line);
+  margin: 28px 0 0;
+  padding-top: 24px;
+}
+
+.dictionary-figure img {
+  display: block;
+  height: auto;
+  margin: 0 auto 24px;
+  max-width: 260px;
+  width: 100%;
+}
+
+.dictionary-figure figcaption {
+  color: #4f5955;
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.framework-notes {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+}
+
+.framework-notes > .disclosure-content {
+  padding: 8px 0 28px;
+}
+
+.focus-details {
+  border-top: 1px solid #ded5ca;
+  margin-top: 22px;
+}
+
+.focus-details > .disclosure-content {
+  padding-top: 8px;
+}
+
 .research-equation {
   border-top: 1px solid var(--line);
   margin: 24px 0 0;
@@ -775,20 +886,24 @@ html:lang(zh-CN) .holography-focus h4 {
 
 .research-topic {
   border-top: 1px solid var(--line);
-  margin-top: 28px;
-  padding-top: 24px;
+  margin-top: 0;
 }
 
-.research-topic h3 {
+.research-topic > summary {
+  color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 400;
   line-height: 1.3;
-  margin: 0 0 18px;
+  padding: 22px 0;
 }
 
-html:lang(zh-CN) .research-topic h3 {
+html:lang(zh-CN) .research-topic > summary {
   font-family: "Songti SC", "STSong", Georgia, serif;
+}
+
+.research-topic > .disclosure-content {
+  padding-bottom: 24px;
 }
 
 .future-program {

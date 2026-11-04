@@ -55,8 +55,8 @@ export const researchAreas: ResearchArea[] = [
       title: { en: "Two dictionaries for flat-space holography", zh: "平直全息的两类字典" },
       intro: [
         {
-          en: "How should a boundary quantum theory describe gravity in asymptotically flat spacetime? A Carrollian theory at null infinity offers a candidate, but the intended dictionary must be specified. I distinguish two approaches by what they identify between bulk and boundary: the physical quantum theory itself, or its scattering amplitudes. Here Type I and Type II name this distinction between holographic dictionaries.",
-          zh: "边界量子理论应当如何描述渐近平直时空中的引力？零无穷远处的 Carroll 理论提供了一个候选，但首先需要明确所要建立的字典。我根据体与边界之间对应的对象，区分两条途径：对应物理量子理论本身，或对应它的散射振幅。这里 Type I 与 Type II 指全息字典的这一区别。",
+          en: "Flat-space holography can match bulk and boundary physical states and observables, or encode scattering amplitudes in boundary correlators. I distinguish these dictionaries as Type I and Type II, respectively. My research focuses on building the Type II description.",
+          zh: "平直全息可以对应体与边界的物理态和可观测量，也可以用边界关联函数编码散射振幅。我将这两类字典分别称为 Type I 与 Type II；我的研究重点是构建后者。",
         },
       ],
       types: [
@@ -66,22 +66,26 @@ export const researchAreas: ResearchArea[] = [
           subtitle: { en: "Hilbert-space duality", zh: "Hilbert 空间对偶" },
           paragraphs: [
             {
-              en: "Bulk and boundary describe the same physical quantum theory, matching state spaces, inner products, and physical Hermitian conjugation. Conventional AdS/CFT has this character; a flat limit that preserves this correspondence remains Type I.",
-              zh: "体与边界描述同一个物理量子理论，态空间、内积和物理厄米共轭相互对应。通常的 AdS/CFT 具有这一性质；保留这种对应关系的平直极限仍属于 Type I。",
+              en: "Type I relates bulk and boundary descriptions of physical states and observables, including the corresponding inner products and Hermitian conjugation. Conventional AdS/CFT and flat limits preserving this physical correspondence provide the guiding picture.",
+              zh: "Type I 对应体与边界的物理态和可观测量，并包含相应的内积与厄米共轭。通常的 AdS/CFT，以及保留这种物理对应关系的平直极限，提供了这一路径的基本图像。",
             },
             {
-              en: "Unitary induced representations arise naturally: the AdS₃/CFT₂ flat contraction takes Virasoro highest-weight modules to induced BMS₃ representations. Bulk local observables become generally nonlocal boundary operators. The criterion is the physical dictionary, rather than a representation label alone.",
-              zh: "幺正诱导表示在这一路径中自然出现：AdS₃/CFT₂ 的平直收缩将 Virasoro 最高权模变为诱导 BMS₃ 表示。体局域可观测量一般对应边界上的非局域算符。判断依据在于物理字典，不能仅凭表示的标签。",
+              en: "A concrete example is the AdS₃/CFT₂ flat contraction, which takes Virasoro highest-weight modules to induced BMS₃ representations; unitary induced modules arise in this setting. Bulk local observables are generally reconstructed as nonlocal boundary operators. These examples motivate the picture, while the physical state and observable dictionary determines the correspondence.",
+              zh: "一个具体例子是 AdS₃/CFT₂ 的平直收缩：它将 Virasoro 最高权模变为诱导 BMS₃ 表示，幺正诱导模出现在这一情形中。体局域可观测量一般重构为边界上的非局域算符。这些例子提供了直观图像，而对应关系需要由物理态与可观测量的字典来确定。",
+            },
+            {
+              en: "A concrete reconstruction map must be specified with its domain, normalization, and pairing. Whether it admits a unitary Hilbert-space realization is a further question.",
+              zh: "具体重构映射需要连同其定义域、归一化和配对一起给出；它是否能成为幺正 Hilbert 空间映射，需要进一步检验。",
             },
           ],
           characteristics: [
             {
               label: { en: "Dictionary", zh: "对应的对象" },
-              detail: { en: "Physical states, their inner products, and their adjoints are preserved.", zh: "保留物理态、态的内积及其共轭关系。" },
+              detail: { en: "Physical states and observables correspond, with their inner products and adjoints specified.", zh: "对应物理态与可观测量，并明确其内积与共轭。" },
             },
             {
               label: { en: "Typical realization", zh: "典型实现" },
-              detail: { en: "Induced representations carrying the bulk physical adjoint.", zh: "携带体物理共轭的诱导表示。" },
+              detail: { en: "Induced representations carrying the bulk physical adjoint in standard examples.", zh: "典型例子中携带体物理共轭的诱导表示。" },
             },
             {
               label: { en: "Regulator picture", zh: "截断面的几何图像" },
@@ -133,12 +137,12 @@ export const researchAreas: ResearchArea[] = [
         title: { en: "My focus: building Type II flat-space holography", zh: "我的主线：构建 Type II 平直全息" },
         paragraphs: [
           {
-            en: "I aim to develop a boundary description in which bulk scattering is organized by Carrollian operators and their correlators. The construction must specify the transform from asymptotic data, the boundary operator/state framework and pairing, and how incoming and outgoing states enter correlation functions. Highest-weight bulk reconstruction supplies an established free-field operator framework; a complete interacting S-matrix dual remains a goal.",
-            zh: "我的目标是发展一种边界描述，用 Carroll 算符及其关联函数组织体散射。这一构造需要明确渐近数据的变换、边界算符与态的框架及其配对，以及入态和出态如何进入关联函数。最高权体重构已提供自由场层面的算符框架；完整的相互作用 S 矩阵对偶仍是有待实现的目标。",
+            en: "My primary goal is to build Type II flat-space holography: a boundary description in which Carrollian correlators encode physical bulk in/out transitions. Highest-weight reconstruction already supplies a free-field operator framework. The next stage develops the asymptotic dictionary, boundary pairing, and tests needed to extend this framework toward interactions.",
+            zh: "我的主要目标是构建 Type II 平直全息，以 Carroll 边界关联函数编码体物理入态与出态之间的跃迁。最高权重构已提供自由场算符框架；下一阶段将发展渐近字典、边界配对及相应检验，推动这一框架走向相互作用。",
           },
           {
-            en: "The immediate program connects that framework to physical Lorentzian particles and observables, including massive modes, explicit state and contour prescriptions, and tests through two-point functions and limiting cases. Extensions to spin and higher-point functions will probe interactions. The temporal-boundary viewpoint of de Sitter holography provides a complementary comparison for this program, with the relevant dictionary and state choices kept explicit.",
-            zh: "近期计划将这一框架联系到 Lorentz 号差下的物理粒子与可观测量，包括有质量模式、明确的态与围道选取，以及两点函数和极限情形的检验。向有自旋的场和高点函数推广，将进一步探查相互作用。de Sitter 全息的时间边界视角为这一计划提供互补参照，同时需要始终明确相应字典与态的选取。",
+            en: "The construction must specify the transform from asymptotic data, the boundary operator/state framework and pairing, and how incoming and outgoing states enter correlation functions. The immediate program connects these ingredients to physical Lorentzian particles and observables, including massive modes, explicit state and contour prescriptions, and tests through two-point functions and limiting cases. Extensions to spin and higher-point functions will probe interactions; a complete interacting S-matrix dual remains a goal. The temporal-boundary viewpoint of de Sitter holography provides a complementary comparison, with the relevant dictionary and state choices kept explicit.",
+            zh: "这一构造需要明确渐近数据的变换、边界算符与态的框架及其配对，以及入态和出态如何进入关联函数。近期计划将这些要素联系到 Lorentz 号差下的物理粒子与可观测量，包括有质量模式、明确的态与围道选取，以及两点函数和极限情形的检验。向有自旋的场和高点函数推广，将进一步探查相互作用；完整的相互作用 S 矩阵对偶仍是有待实现的目标。de Sitter 全息的时间边界视角提供互补参照，同时需要始终明确相应字典与态的选取。",
           },
         ],
       },

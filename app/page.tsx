@@ -67,6 +67,10 @@ const copy = {
     overview: { en: "The bigger picture", zh: "整体图像" },
     directions: { en: "Concrete research directions", zh: "具体研究方向" },
     coordinates: { en: "Compactified coordinates in the diagrams", zh: "图中的紧化坐标" },
+    perspective: { en: "Research perspective", zh: "研究图景" },
+    details: { en: "Theory, formulas & figure", zh: "原理、公式与图示" },
+    sharedNotes: { en: "Shared conventions & Mellin dictionary", zh: "共用约定与 Mellin 字典" },
+    nextSteps: { en: "Current work & next steps", zh: "当前工作与下一步" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
     close: { en: "Collapse research area", zh: "收起研究方向" },
@@ -292,11 +296,14 @@ export default function Home() {
           <p>{pick(locale, copy.research.intro)}</p>
         </div>
 
-        <div className="research-vision">
-          {researchVision.map((paragraph) => (
-            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-          ))}
-        </div>
+        <details className="research-vision-disclosure">
+          <summary className="disclosure-summary">{pick(locale, copy.research.perspective)}</summary>
+          <div className="research-vision">
+            {researchVision.map((paragraph) => (
+              <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+            ))}
+          </div>
+        </details>
 
         <div className="research-accordion">
           {researchAreas.map((area) => {
@@ -346,73 +353,84 @@ export default function Home() {
                           ))}
                         </div>
                         <div className="dictionary-grid">
-                          {area.framework.types.map((type) => (
-                            <article className={`dictionary-card dictionary-${type.id}`} key={type.id}>
-                              <h4>{pick(locale, type.title)}</h4>
-                              <p className="dictionary-subtitle">{pick(locale, type.subtitle)}</p>
-                              {type.paragraphs.map((paragraph) => (
-                                <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                              ))}
-                              {dictionaryEquations[type.id] && (
-                                <ResearchMath equation={dictionaryEquations[type.id]} locale={locale} />
-                              )}
-                              <dl>
-                                {type.characteristics.map((item) => (
-                                  <div key={item.label.en}>
-                                    <dt>{pick(locale, item.label)}</dt>
-                                    <dd>{pick(locale, item.detail)}</dd>
+                          {area.framework.types.map((type) => {
+                            const figure = cutoffGeometry.figures[type.id === "type-i" ? 0 : 1];
+                            const adjoint = pairingComparison.equations[type.id === "type-i" ? 0 : 1];
+                            return (
+                              <article className={`dictionary-card dictionary-${type.id}`} key={type.id}>
+                                <h4>{pick(locale, type.title)}</h4>
+                                <p className="dictionary-subtitle">{pick(locale, type.subtitle)}</p>
+                                <p>{pick(locale, type.paragraphs[0])}</p>
+                                <details className="dictionary-details">
+                                  <summary className="disclosure-summary">{pick(locale, copy.research.details)}</summary>
+                                  <div className="disclosure-content">
+                                    {type.paragraphs.slice(1).map((paragraph) => (
+                                      <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                                    ))}
+                                    <dl>
+                                      {type.characteristics.map((item) => (
+                                        <div key={item.label.en}>
+                                          <dt>{pick(locale, item.label)}</dt>
+                                          <dd>{pick(locale, item.detail)}</dd>
+                                        </div>
+                                      ))}
+                                    </dl>
+                                    {dictionaryEquations[type.id] && (
+                                      <ResearchMath equation={dictionaryEquations[type.id]} locale={locale} />
+                                    )}
+                                    <ResearchMath equation={adjoint} locale={locale} />
+                                    <figure className="dictionary-figure">
+                                      <Image
+                                        src={figure.src}
+                                        alt={pick(locale, figure.alt)}
+                                        width={442}
+                                        height={796}
+                                        unoptimized
+                                      />
+                                      <figcaption>{pick(locale, figure.caption)}</figcaption>
+                                    </figure>
                                   </div>
-                                ))}
-                              </dl>
-                            </article>
-                          ))}
+                                </details>
+                              </article>
+                            );
+                          })}
                         </div>
-                        <section className="cutoff-geometry" aria-labelledby="cutoff-geometry-title">
-                          <h4 id="cutoff-geometry-title">{pick(locale, cutoffGeometry.title)}</h4>
-                          <p>{pick(locale, cutoffGeometry.intro)}</p>
-                          <div className="cutoff-figure-grid">
-                            {cutoffGeometry.figures.map((figure) => (
-                              <figure key={figure.id}>
-                                <Image
-                                  src={figure.src}
-                                  alt={pick(locale, figure.alt)}
-                                  width={442}
-                                  height={796}
-                                  unoptimized
-                                />
-                                <figcaption>{pick(locale, figure.caption)}</figcaption>
-                              </figure>
-                            ))}
-                          </div>
-                          <details className="coordinate-note">
-                            <summary>{pick(locale, copy.research.coordinates)}</summary>
-                            <ResearchMath equation={cutoffGeometry.coordinates} locale={locale} />
-                          </details>
-                        </section>
-                        <section className="pairing-comparison" aria-labelledby="pairing-comparison-title">
-                          <h4 id="pairing-comparison-title">{pick(locale, pairingComparison.title)}</h4>
-                          <p>{pick(locale, pairingComparison.intro)}</p>
-                          <div className="pairing-equation-grid">
-                            {pairingComparison.equations.map((equation) => (
-                              <ResearchMath key={equation.id} equation={equation} locale={locale} />
-                            ))}
-                          </div>
-                        </section>
-                        <div className="dictionary-conclusion">
-                          {area.framework.conclusion.map((paragraph) => (
-                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                          ))}
-                        </div>
-                        <section className="mellin-dictionary" aria-labelledby="mellin-dictionary-title">
-                          <h4 id="mellin-dictionary-title">{pick(locale, mellinDictionary.title)}</h4>
-                          <ResearchMath equation={mellinDictionary.equation} locale={locale} />
-                        </section>
                         <section className="holography-focus" aria-labelledby={`focus-title-${area.id}`}>
                           <h4 id={`focus-title-${area.id}`}>{pick(locale, area.framework.focus.title)}</h4>
-                          {area.framework.focus.paragraphs.map((paragraph) => (
-                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                          ))}
+                          <p>{pick(locale, area.framework.focus.paragraphs[0])}</p>
+                          <details className="focus-details">
+                            <summary className="disclosure-summary">{pick(locale, copy.research.nextSteps)}</summary>
+                            <div className="disclosure-content">
+                              {area.framework.focus.paragraphs.slice(1).map((paragraph) => (
+                                <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                              ))}
+                            </div>
+                          </details>
                         </section>
+                        <details className="framework-notes">
+                          <summary className="disclosure-summary">{pick(locale, copy.research.sharedNotes)}</summary>
+                          <div className="disclosure-content">
+                            <div className="dictionary-conclusion">
+                              {area.framework.conclusion.map((paragraph) => (
+                                <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                              ))}
+                            </div>
+                            <section className="pairing-comparison" aria-labelledby="pairing-comparison-title">
+                              <h4 id="pairing-comparison-title">{pick(locale, pairingComparison.title)}</h4>
+                              <p>{pick(locale, pairingComparison.intro)}</p>
+                              <ResearchMath equation={pairingComparison.equations[2]} locale={locale} />
+                            </section>
+                            <section className="mellin-dictionary" aria-labelledby="mellin-dictionary-title">
+                              <h4 id="mellin-dictionary-title">{pick(locale, mellinDictionary.title)}</h4>
+                              <ResearchMath equation={mellinDictionary.equation} locale={locale} />
+                            </section>
+                            <details className="coordinate-note">
+                              <summary className="disclosure-summary">{pick(locale, copy.research.coordinates)}</summary>
+                              <p>{pick(locale, cutoffGeometry.intro)}</p>
+                              <ResearchMath equation={cutoffGeometry.coordinates} locale={locale} />
+                            </details>
+                          </div>
+                        </details>
                       </section>
                     )}
                     <div className="research-detail">
@@ -427,12 +445,14 @@ export default function Home() {
                         </div>
                       )}
                       {area.sections.map((section) => (
-                        <section className="research-topic" key={section.title.en}>
-                          <h3>{pick(locale, section.title)}</h3>
-                          {section.paragraphs.map((paragraph) => (
-                            <p key={paragraph.en}>{pick(locale, paragraph)}</p>
-                          ))}
-                        </section>
+                        <details className="research-topic" key={section.title.en}>
+                          <summary className="disclosure-summary">{pick(locale, section.title)}</summary>
+                          <div className="disclosure-content">
+                            {section.paragraphs.map((paragraph) => (
+                              <p key={paragraph.en}>{pick(locale, paragraph)}</p>
+                            ))}
+                          </div>
+                        </details>
                       ))}
                       <ul aria-label={isZh ? "研究关键词" : "Research topics"}>
                         {area.topics[locale].map((topic) => <li key={topic}>{topic}</li>)}
