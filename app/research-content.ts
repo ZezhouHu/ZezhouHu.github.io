@@ -153,11 +153,11 @@ export const researchAreas: ResearchArea[] = [
         ],
       },
       {
-        title: { en: "Next tests: physical states and factorization", zh: "下一步检验：物理态与因子化" },
+        title: { en: "Future direction: tensionless string field theory", zh: "未来方向：无张力弦场论" },
         paragraphs: [
           {
-            en: "Comparing BRST cohomologies, spectra, and vertex operators will test whether taking the tensionless limit before or after quantization yields equivalent physical states. I will study moduli integration, degeneration limits, and factorization to constrain interactions and their relation to high-energy string scattering. Extending these comparisons to branes will test which principles survive for more general extended objects.",
-            zh: "通过比较 BRST 上同调、物理谱和顶点算符，我们将检验在量子化之前或之后取无张力极限，是否得到等价的物理态。我将研究模空间积分、退化极限与因子化，以约束相互作用及其与高能弦散射的联系。将这些比较推广到膜，则可检验哪些原则适用于更一般的延展物体。",
+            en: "A future direction is to explore string field theory for tensionless strings, describing the string spectrum and its interactions within a common field-theoretic framework. BRST cohomology, spectra, and vertex operators provide starting points for identifying the field content and organizing interaction terms. Comparing intrinsic null-string quantization with the tensionless limit of finite-tension string theory will help clarify how the order of these operations affects this construction. Together with studies of moduli integration and degeneration limits, this program aims to connect tensionless string interactions to high-energy string scattering and assess which features can extend to branes.",
+            zh: "未来的一个研究方向是探索无张力弦的弦场论，在共同的场论框架中描述弦的谱与相互作用。BRST 上同调、物理谱和顶点算符为确定弦场所包含的自由度、组织相互作用项提供出发点。比较内禀零弦量子化与有限张力弦的无张力极限，将有助于厘清量子化与取极限的先后顺序如何影响这一构造。结合对模空间积分和退化极限的研究，这一计划旨在建立无张力弦相互作用与高能弦散射之间的联系，并考察其中哪些结构可以推广到膜。",
           },
         ],
       },
