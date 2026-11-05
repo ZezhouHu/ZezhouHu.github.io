@@ -5,6 +5,12 @@ export type ResearchSection = {
   paragraphs: LocalizedText[];
 };
 
+type ResearchReferenceGroup = {
+  title: LocalizedText;
+  description: LocalizedText;
+  papers: { authors: string; title: string; arxiv: string }[];
+};
+
 export type ResearchArea = {
   id: string;
   index: string;
@@ -21,6 +27,7 @@ export type ResearchArea = {
       paragraphs: LocalizedText[];
       notes: LocalizedText[];
       characteristics: { label: LocalizedText; detail: LocalizedText }[];
+      references: ResearchReferenceGroup[];
     }[];
     focus: { title: LocalizedText; paragraphs: LocalizedText[] };
   };
@@ -98,6 +105,51 @@ export const researchAreas: ResearchArea[] = [
               detail: { en: "Timelike radial cutoffs r = R, removed by R → ∞ while retaining boundary time evolution.", zh: "类时径向截断面 r = R 在保留边界时间演化的同时，通过 R → ∞ 移除截断。" },
             },
           ],
+          references: [
+            {
+              title: { en: "AdS as an infrared regulator", zh: "以 AdS 作为红外调节" },
+              description: {
+                en: "Susskind uses AdS/CFT as an infrared-regulated description of flat-space quantum theory. Removing the regulator makes the holographic image of a bulk system increasingly nonlocal.",
+                zh: "Susskind 以 AdS/CFT 为平直时空量子理论提供红外调节后的描述。移除调节时，体系统的全息像变得更加非局域。",
+              },
+              papers: [{ authors: "L. Susskind", title: "Holography in the Flat Space Limit", arxiv: "hep-th/9901079" }],
+            },
+            {
+              title: { en: "A precise free-field realization", zh: "自由场的严格实现" },
+              description: {
+                en: "For a real massless scalar in four-dimensional Minkowski spacetime, Dappiaggi, Moretti and Pinamonti embed the bulk Weyl algebra into the null-boundary algebra. In this example, a vacuum-preserving unitary implements the correspondence between the associated Fock spaces.",
+                zh: "对于四维 Minkowski 时空中的实无质量标量场，Dappiaggi、Moretti 与 Pinamonti 将体 Weyl 代数嵌入零边界代数。在这一具体例子中，保持真空的幺正映射实现了相应 Fock 空间之间的对应。",
+              },
+              papers: [{ authors: "C. Dappiaggi, V. Moretti and N. Pinamonti", title: "Rigorous steps towards holography in asymptotically flat spacetimes", arxiv: "gr-qc/0506069" }],
+            },
+            {
+              title: { en: "Induced BMS representations", zh: "BMS 诱导表示" },
+              description: {
+                en: "Campoleoni and collaborators obtain unitary BMS₃ modules through an ultrarelativistic limit of Virasoro highest-weight representations. This gives a representation-theoretic example of retaining physical state-space structure in a flat limit.",
+                zh: "Campoleoni 等人通过 Virasoro 最高权表示的超相对论极限得到幺正 BMS₃ 模，为在平直极限中保留物理态空间结构提供了表示论上的例子。",
+              },
+              papers: [{ authors: "A. Campoleoni, H. A. Gonzalez, B. Oblak and M. Riegler", title: "BMS Modules in Three Dimensions", arxiv: "1603.03812" }],
+            },
+            {
+              title: { en: "Carrollian fields for physical particle states", zh: "描述物理粒子态的 Carroll 场" },
+              description: {
+                en: "Nguyen and West construct fields at null infinity that create the same massless particle states as bulk fields. Their transformation under Carrollian conformal symmetry follows from the Poincaré action on those states.",
+                zh: "Nguyen 与 West 在零无穷远处构造产生与体场相同的无质量粒子态的场；这些场的 Carroll 共形变换来自 Poincaré 对称性对粒子态的作用。",
+              },
+              papers: [{ authors: "K. Nguyen and P. West", title: "Carrollian conformal fields and flat holography", arxiv: "2305.02884" }],
+            },
+            {
+              title: { en: "Particle Hilbert spaces from AdS", zh: "从 AdS 得到粒子 Hilbert 空间" },
+              description: {
+                en: "Nguyen derives massive and massless Wigner representations by contracting AdS particle representations. With the appropriate rescaling, their inner products converge to the physical Poincaré-invariant ones; the massless contraction also involves an infinite boost.",
+                zh: "Nguyen 通过 AdS 粒子表示的收缩得到有质量与无质量 Wigner 表示。适当重标度后，内积收敛到物理的 Poincaré 不变内积；无质量收缩还需要结合无限 boost。",
+              },
+              papers: [
+                { authors: "K. Nguyen", title: "Hilbert space in the flat limit of AdS/CFT. I. Massive particles", arxiv: "2609.31055" },
+                { authors: "K. Nguyen", title: "Hilbert space in the flat limit of AdS/CFT. II. Massless particles", arxiv: "2610.40878" },
+              ],
+            },
+          ],
         },
         {
           id: "type-ii",
@@ -131,6 +183,70 @@ export const researchAreas: ResearchArea[] = [
             {
               label: { en: "Regulator picture", zh: "截断面的几何图像" },
               detail: { en: "Spacelike temporal cutoffs t = ±T regulate in/out states; T → ∞ gives the scattering limit.", zh: "类空时间截断面 t = ±T 调节入态与出态，并以 T → ∞ 趋向散射极限。" },
+            },
+          ],
+          references: [
+            {
+              title: { en: "Highest-weight bulk reconstruction", zh: "最高权表示与体重构" },
+              description: {
+                en: "Our work reconstructs massless free bulk fields from descendants of a Carrollian primary state. It provides a free-field starting point for my Type II programme; connecting it to scattering requires an asymptotic-state transform and a boundary pairing.",
+                zh: "我们的工作从 Carroll 初级态的后裔重构无质量自由体场，为我的 Type II 研究提供自由场层面的起点。将其联系到散射，仍需明确渐近态变换与边界配对。",
+              },
+              papers: [{ authors: "B. Chen and Z. Hu", title: "Bulk reconstruction in flat holography", arxiv: "2312.13574" }],
+            },
+            {
+              title: { en: "Boundary highest-weight BMS modules", zh: "边界上的 BMS 最高权模" },
+              description: {
+                en: "Chen, He, Mao and Mao realize highest-weight BMS₃ and BMS₄ modules on a codimension-two boundary and compute their characters. This supplies a representation-theoretic setting for the boundary operators and radial conjugation discussed above.",
+                zh: "Chen、He、Mao 与 Mao 在余维二边界上实现 BMS₃ 与 BMS₄ 最高权模，并计算其特征标，为上述边界算符及径向共轭提供表示论上的参照。",
+              },
+              papers: [{ authors: "B. Chen, S. He, P. Mao and X.-C. Mao", title: "Character of the highest weight module of BMS algebra realized on codimensional-two boundary", arxiv: "2507.10137" }],
+            },
+            {
+              title: { en: "Scattering as a celestial state pairing", zh: "以天球态的配对表示散射" },
+              description: {
+                en: "Crawley and collaborators construct celestial states on oriented circles, grouping incoming and outgoing insertions by their positions. Scattering amplitudes become BPZ pairings between states on oppositely oriented circles. The shadow-based boundary pairing differs from the physical bulk Klein–Gordon product.",
+                zh: "Crawley 等人在定向圆上构造天球态，按位置组织入射与出射算符插入。散射振幅表示为取向相反的圆上态之间的 BPZ 配对；这一基于 shadow 变换的边界配对有别于体物理 Klein–Gordon 内积。",
+              },
+              papers: [{ authors: "E. Crawley, N. Miller, S. A. Narayanan and A. Strominger", title: "State-Operator Correspondence in Celestial Conformal Field Theory", arxiv: "2105.00331" }],
+            },
+            {
+              title: { en: "Shadow transforms and conformal blocks", zh: "Shadow 变换与共形块" },
+              description: {
+                en: "Fan and collaborators combine inversion with a shadow transform in radial conjugation. They study four-gluon celestial correlators with one shadow-transformed insertion and compute their conformal-block decomposition, giving a concrete example beyond two-point functions.",
+                zh: "Fan 等人在径向共轭中结合反演与 shadow 变换，研究一个插入经过 shadow 变换的四胶子天球关联函数，并计算其共形块分解，提供了超出两点函数的具体例子。",
+              },
+              papers: [{ authors: "W. Fan, A. Fotopoulos, S. Stieberger, T. R. Taylor and B. Zhu", title: "Conformal Blocks from Celestial Gluon Amplitudes", arxiv: "2103.04420" }],
+            },
+            {
+              title: { en: "An integer-weight basis and its pairing", zh: "整数权重基底及其配对" },
+              description: {
+                en: "Cotler, Miller and Strominger construct integer-weight primary and descendant modes with a modified Klein–Gordon pairing involving reflection, shadow and conformal-weight transforms. The basis reconstructs the massless-scalar Wightman function; its adjoint agrees with radial conjugation on the global Lorentz algebra.",
+                zh: "Cotler、Miller 与 Strominger 构造整数权重的初级模式与后裔，并通过反射、shadow 和共形权重变换定义修正的 Klein–Gordon 配对。该基底可重构无质量标量场的 Wightman 函数；其共轭在整体 Lorentz 代数上与径向共轭一致。",
+              },
+              papers: [{ authors: "J. Cotler, N. Miller and A. Strominger", title: "An Integer Basis for Celestial Amplitudes", arxiv: "2302.04905" }],
+            },
+            {
+              title: { en: "Carrollian and celestial amplitude dictionaries", zh: "Carroll 与天球振幅字典" },
+              description: {
+                en: "Bagchi, Dhivakar and Dutta compare ordinary and modified Mellin dictionaries, with explicit Carrollian correlators from flat limits of AdS Witten diagrams. Donnay and collaborators relate Carrollian and celestial operators and their Ward identities. These works motivate the transform above; equivalence of amplitude data still leaves the boundary pairing to be specified.",
+                zh: "Bagchi、Dhivakar 与 Dutta 比较通常及修正的 Mellin 字典，并从 AdS Witten 图的平直极限得到具体的 Carroll 关联函数。Donnay 等人联系 Carroll 与天球算符及其 Ward 恒等式。这些工作为上述变换提供依据，而振幅数据的等价仍未确定边界配对。",
+              },
+              papers: [
+                { authors: "A. Bagchi, P. Dhivakar and S. Dutta", title: "Holography in Flat Spacetimes: the case for Carroll", arxiv: "2311.11246" },
+                { authors: "L. Donnay, A. Fiorucci, Y. Herfray and R. Ruzziconi", title: "Carrollian Perspective on Celestial Holography", arxiv: "2202.04702" },
+              ],
+            },
+            {
+              title: { en: "A temporal-boundary precedent in dS/CFT", zh: "dS/CFT 中的时间边界先例" },
+              description: {
+                en: "Strominger relates de Sitter correlators at past and future conformal boundaries to a Euclidean CFT, with antipodal identification. Spradlin and Volovich formulate a past-to-future transition prescription. This provides a precedent for the Type II temporal-boundary picture without equating the radial boundary pairing with the Lorentzian bulk inner product.",
+                zh: "Strominger 将 de Sitter 过去与未来共形边界上的关联函数联系到 Euclidean CFT，并采用对跖点识别。Spradlin 与 Volovich 进一步提出从过去到未来的跃迁描述，为 Type II 的时间边界图像提供先例，同时不将边界径向配对等同于 Lorentz 体内积。",
+              },
+              papers: [
+                { authors: "A. Strominger", title: "The dS/CFT Correspondence", arxiv: "hep-th/0106113" },
+                { authors: "M. Spradlin and A. Volovich", title: "Vacuum States and the S-Matrix in dS/CFT", arxiv: "hep-th/0112223" },
+              ],
             },
           ],
         },

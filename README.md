@@ -47,6 +47,10 @@ included with their respective types, and the Mellin dictionary belongs to
 Type II. Each figure has its own expandable coordinate explanation. A concrete Type I
 reconstruction map is not assumed to be unitary: its domain, normalization,
 pairing, and possible Hilbert-space realization require separate analysis.
+Each type's disclosure also contains the note's representative constructions
+and related literature: six Type I references and nine Type II references,
+with bilingual explanations and direct arXiv links. Free-field and
+representation-theoretic ingredients are described within their stated scope.
 The framework includes the note's original vector cutoff diagrams and KaTeX
 equations with bilingual definitions. Formula and figure data are maintained in
 `app/holography-visuals.ts`; the math component is `app/research-math.tsx`.

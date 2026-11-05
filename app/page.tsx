@@ -68,7 +68,8 @@ const copy = {
     directions: { en: "Research projects", zh: "研究项目" },
     coordinates: { en: "Diagram coordinates", zh: "图示坐标" },
     perspective: { en: "Research perspective", zh: "研究图景" },
-    details: { en: "Details, equations and diagram", zh: "详细说明、公式与图示" },
+    details: { en: "Details, equations and references", zh: "详细说明、公式与文献" },
+    references: { en: "Representative constructions and related literature", zh: "代表性构造与相关文献" },
     nextSteps: { en: "Current work and next steps", zh: "当前工作与下一步" },
     related: { en: "Related work", zh: "相关工作" },
     open: { en: "Expand research area", zh: "展开研究方向" },
@@ -402,6 +403,28 @@ export default function Home() {
                                         locale={locale}
                                       />
                                     </details>
+                                    <section className="dictionary-references" aria-labelledby={`references-${type.id}`}>
+                                      <h5 id={`references-${type.id}`}>{pick(locale, copy.research.references)}</h5>
+                                      <ul className="reference-groups">
+                                        {type.references.map((group) => (
+                                          <li key={group.title.en}>
+                                            <h6>{pick(locale, group.title)}</h6>
+                                            <p>{pick(locale, group.description)}</p>
+                                            <ul className="reference-papers">
+                                              {group.papers.map((paper) => (
+                                                <li key={paper.arxiv}>
+                                                  <span>{paper.authors}</span>
+                                                  <a href={`https://arxiv.org/abs/${paper.arxiv}`}>
+                                                    <cite>{paper.title}</cite>
+                                                    <span className="reference-id">arXiv:{paper.arxiv}</span>
+                                                  </a>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </section>
                                   </div>
                                 </details>
                               </article>

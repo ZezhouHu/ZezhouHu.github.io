@@ -690,6 +690,80 @@ html:lang(zh-CN) .research-trigger-copy strong {
   margin-top: 24px;
 }
 
+.dictionary-references {
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.dictionary-references h5 {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.dictionary-references ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reference-groups {
+  margin: 0;
+}
+
+.reference-groups > li + li {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  padding-top: 22px;
+}
+
+.reference-groups h6 {
+  color: var(--ink);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.reference-groups p {
+  font-size: 0.86rem;
+  margin-top: 8px;
+}
+
+.reference-papers {
+  margin: 12px 0 0;
+}
+
+.reference-papers > li {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.reference-papers > li + li {
+  margin-top: 12px;
+}
+
+.reference-papers > li > span,
+.reference-id {
+  color: var(--muted);
+  display: block;
+}
+
+.reference-papers a {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dictionary-type-ii .reference-papers a {
+  color: var(--coral);
+}
+
+.reference-papers cite {
+  font-style: normal;
+}
+
 .focus-details {
   border-top: 1px solid #ded5ca;
   margin-top: 22px;
